@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trailquest - Reviews</title>
+  <link rel="stylesheet" href="../css/review.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../Image/logo.png" alt="logo">
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../html/index.html">Home</a></li>
+        <li><a href="../html/why-choose-us.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <a href="../html/profile.html" id="profile-color"><i class="fas fa-user-circle"></i></a>
+      <a href="../html/chat.html" id="profile-color"><i class="fas fa-comment-dots"></i></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="tab-navigation">
+      <a class="tab" id="tabOverview">Overview</a>
+      <a class="tab" id="tabConditions">Conditions</a>
+      <a class="tab" id="tabReviews">Reviews</a>
+      <a class="tab" id="tabUpdates">Trail updates</a>
+    </div>
+
+    <div class="content-wrapper">
+      <aside class="left-sidebar">
+        <div class="reviews-summary-card">
+          <h2>Reviews</h2>
+          <div class="overall-rating">
+            <span id="average-rating" class="rating-value">0.0</span>
+            <div class="stars" id="average-stars">
+              <!-- Stars will be injected here -->
+            </div>
+            <span id="review-count" class="review-count">0 Reviews</span>
+          </div>
+
+          <div class="star-breakdown" id="star-breakdown">
+            <div class="star-row"><span>5<i class="fas fa-star"></i></span><div class="progress-bar-container"><div class="progress-bar" id="star-5"></div></div></div>
+            <div class="star-row"><span>4<i class="fas fa-star"></i></span><div class="progress-bar-container"><div class="progress-bar" id="star-4"></div></div></div>
+            <div class="star-row"><span>3<i class="fas fa-star"></i></span><div class="progress-bar-container"><div class="progress-bar" id="star-3"></div></div></div>
+            <div class="star-row"><span>2<i class="fas fa-star"></i></span><div class="progress-bar-container"><div class="progress-bar" id="star-2"></div></div></div>
+            <div class="star-row"><span>1<i class="fas fa-star"></i></span><div class="progress-bar-container"><div class="progress-bar" id="star-1"></div></div></div>
+          </div>
+          <button class="review-button" id="openReviewFormBtn">Review</button>
+        </div>
+      </aside>
+
+      <section class="main-reviews-content">
+        <h2 class="section-title">Reviews</h2>
+
+        <div class="review-submission-section" id="reviewSubmissionSection" style="display: none;">
+          <h3>Submit Your Review</h3>
+          <form id="reviewForm" class="review-form">
+            <div class="form-group">
+              <label for="reviewRating">Rating:</label>
+              <div class="stars-input" id="reviewRatingInput">
+                <i class="far fa-star" data-value="1"></i>
+                <i class="far fa-star" data-value="2"></i>
+                <i class="far fa-star" data-value="3"></i>
+                <i class="far fa-star" data-value="4"></i>
+                <i class="far fa-star" data-value="5"></i>
+              </div>
+              <input type="hidden" id="selectedRating" name="rating" value="0">
+            </div>
+
+            <div class="form-group">
+              <label for="reviewImage">Upload Image (optional):</label>
+              <input type="file" id="reviewImage" accept="image/*">
+            </div>
+
+            <div class="form-group">
+              <label for="reviewText">Your Review:</label>
+              <textarea id="reviewText" rows="5" placeholder="Write your review here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-review-btn">Submit Review</button>
+          </form>
+          <hr style="margin: 30px 0; border: 0; border-top: 1px solid var(--border-color);">
+        </div>
+
+        <div id="reviewsContainer" class="reviews-container">
+          <p id="noReviewsMessage" style="text-align: center; color: #777; display: none;">No new reviews yet. Be the first to leave one!</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/main-tab.js"></script>
+  <script type="module" src="../js/reviews.js"></script>
+</body>
+</html>

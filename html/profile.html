@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile – Trail Quest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/script.js"></script>
+    <!-- PWA Manifest & Theme -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2E7D32">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+      .header-navbar {
+        width: 100%;
+        background: linear-gradient(90deg, #0b3d19 0%, #11491e 100%);
+        color: #fff;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        position: sticky; top: 0; z-index: 10;
+      }
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        padding: 0 36px;
+      }
+      .header-logo img {
+        height: 48px;
+        width: 48px;
+        object-fit: contain;
+        cursor: pointer;
+      }
+      .header-nav {
+        display: flex;
+        gap: 36px;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 1.1rem;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+        padding: 4px 10px;
+        border-radius: 5px;
+      }
+      .nav-link.active,
+      .nav-link:hover {
+        background: #116639;
+        color: #fff;
+      }
+      .header-icons {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+      }
+      .header-icons a {
+        color: #fff;
+        font-size: 1.6rem;
+        transition: color 0.2s;
+      }
+      .header-icons a:hover {
+        color: #73e8a7;
+      }
+      .profile-container {
+        max-width: 520px;
+        margin: 42px auto 0 auto;
+        padding: 0 16px;
+      }
+      .profile-card {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+        padding: 32px 26px;
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .profile-avatar-wrap {
+        position: relative;
+      }
+      .profile-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 0 4px #f7f7f7;
+        border: 2px solid #eee;
+      }
+      .edit-avatar-label {
+        cursor: pointer;
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        background: #fff;
+        border: 1.5px solid #116639;
+        border-radius: 50%;
+        padding: 7px 7px 4px 7px;
+        font-size: 1.1rem;
+        color: #116639;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.13);
+        transition: background 0.2s;
+      }
+      .edit-avatar-label:hover {
+        background: #e7f3ed;
+      }
+      .profile-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .profile-level,
+      .profile-email,
+      .profile-phone,
+      .profile-location {
+        color: #76818d;
+        font-size: 1rem;
+        margin-top: 8px;
+        text-align: center;
+      }
+      .profile-input,
+      .profile-input:focus {
+        display: block;
+        font-size: 1.1rem;
+        font-family: inherit;
+        margin: 8px auto;
+        border: none;
+        border-bottom: 1.5px solid #b2b8c2;
+        background: #f9fbfd;
+        outline: none;
+        text-align: center;
+        padding: 6px 8px 4px 8px;
+        border-radius: 5px 5px 0 0;
+        width: 95%;
+        transition: border 0.2s;
+      }
+      .profile-input:focus {
+        border-bottom: 2px solid #116639;
+        background: #f3fdfa;
+      }
+      .profile-actions {
+        margin-top: 22px;
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+      }
+      .profile-btn,
+      .profile-btn:focus {
+        background: #fff;
+        border: 1.5px solid #116639;
+        color: #116639;
+        border-radius: 22px;
+        padding: 8px 34px;
+        font-size: 1.08rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        outline: none;
+      }
+      .profile-btn.save {
+        background: #116639;
+        color: #fff;
+        border: none;
+      }
+      .profile-btn.logout {
+        background: #ebf0ed;
+        color: #222;
+        border: 1px solid #c3cbc8;
+      }
+      .profile-btn:hover,
+      .profile-btn:focus {
+        background: #d7f3e6;
+        color: #083814;
+      }
+      .profile-btn.save:hover {
+        background: #22b965;
+        color: #fff;
+      }
+      .profile-btn.logout:hover {
+        background: #fff3f3;
+        color: #cc3333;
+        border: 1.5px solid #e3b2b2;
+      }
+      .profile-divider {
+        margin: 24px 0 12px 0;
+        border-bottom: 1.2px solid #eee;
+      }
+      .profile-label {
+        color: #4f5a68;
+        font-size: 1.03rem;
+        margin-top: 14px;
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+      #statusMessage {
+        text-align: center;
+        color: #2b7a38;
+        margin-top: 10px;
+        font-size: 1rem;
+        display: none;
+      }
+      #loginFormContainer {
+        max-width: 390px;
+        margin: 80px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        padding: 30px 28px 22px 28px;
+      }
+      #loginForm h2 {
+        text-align: center;
+        color: #105021;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+      #loginForm input {
+        width: 100%;
+        margin: 10px 0 15px 0;
+        font-size: 1rem;
+        padding: 9px 13px;
+        border: 1px solid #d6e2da;
+        border-radius: 7px;
+        outline: none;
+        transition: border 0.2s;
+        background: #f7faf9;
+      }
+      #loginForm input:focus {
+        border: 1.5px solid #12a166;
+      }
+      #loginErrorMessage {
+        color: #e12d39;
+        margin-top: 8px;
+        text-align: center;
+        display: none;
+      }
+      .hidden {
+        display: none !important;
+      }
+      @media (max-width: 650px) {
+        .header-container {
+          flex-direction: column;
+          height: auto;
+          padding: 12px;
+          gap: 14px;
+        }
+        .profile-container {
+          padding: 0 6px;
+        }
+        .profile-card {
+          padding: 18px 5px;
+        }
+        #loginFormContainer {
+          padding: 16px 5px 12px 5px;
+        }
+      }
+    </style>
+  </head>  
+<body>
+  <header class="header-navbar">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="#" id="logoRedirectLink">
+          <img src="../Image/logo.png" alt="Trail Quest Logo" />
+        </a>
+      </div>
+      <nav class="header-nav">
+        <a href="#" id="homeRedirectLink" class="nav-link active">Home</a>
+        <a href="../html/why-choose-us.html" class="nav-link">About Us</a>
+      </nav>
+      <div class="header-icons">
+        <a href="profile.html" title="Profile"><i class="fas fa-user-circle"></i></a>
+        <a href="messages.html" title="Messages"><i class="fas fa-comments"></i></a>
+      </div>
+    </div>
+  </header>
+  
+  <div id="loginFormContainer" class="hidden">
+    <form id="loginForm" autocomplete="on">
+      <h2>Login to Profile</h2>
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit" class="profile-btn save" style="width:100%;margin-top:6px;">Login</button>
+      <div id="loginErrorMessage"></div>
+    </form>
+  </div>
+  
+  <div class="profile-container">
+    <div class="profile-card hidden" id="profileContent">
+      <div class="profile-avatar-wrap">
+        <img id="profileImage" src="https://placehold.co/100x100/A0A0A0/FFFFFF?text=Profile" alt="Profile Picture" class="profile-avatar">
+        <label for="profileImageUpload" class="edit-avatar-label hidden">
+          <i class="fas fa-camera"></i>
+        </label>
+        <input type="file" id="profileImageUpload" accept="image/*" class="hidden">
+      </div>
+      <div class="profile-name" id="profileNameDisplay"></div>
+      <input type="text" id="profileNameInput" class="profile-input hidden" name="fullName" />
+      <div class="profile-level" id="profileLevelDisplay"></div>
+      <input type="text" id="profileLevelInput" class="profile-input hidden" name="level" />
+  
+      <div class="profile-label">Email</div>
+      <div class="profile-email" id="profileEmailDisplay"></div>
+  
+      <div class="profile-label">Phone</div>
+      <div class="profile-phone" id="profilePhoneDisplay"></div>
+      <input type="text" id="profilePhoneInput" class="profile-input hidden" name="phone" />
+  
+      <div class="profile-label">Location</div>
+      <div class="profile-location" id="profileLocationDisplay"></div>
+      <input type="text" id="profileLocationInput" class="profile-input hidden" name="location" />
+  
+      <div class="profile-actions">
+        <button id="editProfileButton" class="profile-btn">✏️ Edit</button>
+        <button id="saveProfileButton" class="profile-btn save hidden">💾 Save</button>
+        <button id="logoutButton" class="profile-btn logout" type="button">Log Out</button>
+      </div>
+  
+      <div id="statusMessage"></div>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUV-8E2w3Td_TyYo52LAvhb2WA9CnVaLY",
+      authDomain: "trial-quest-45442.firebaseapp.com",
+      databaseURL: "https://trial-quest-45442-default-rtdb.firebaseio.com",
+      projectId: "trial-quest-45442",
+      storageBucket: "trial-quest-45442.firebasestorage.app",
+      messagingSenderId: "780796401639",
+      appId: "1:780796401639:web:b3bfb178ff7450ac3c0f42",
+      measurementId: "G-MC6VBKFG01"
+    };
+  
+    const SUPABASE_URL = "https://kfsiwdkqyapfoztpnqph.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtmc2l3ZGtxeWFwZm96dHBucXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMTgzNjcsImV4cCI6MjA2Njg5NDM2N30.Tp2QG3mq8cW62PY_7DHTgqxWnLeyEf_k5wlM9Ma6yCE";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+  
+    const loginForm = document.getElementById('loginForm');
+    const loginEmailInput = document.getElementById('loginEmail');
+    const loginPasswordInput = document.getElementById('loginPassword');
+    const loginErrorMessage = document.getElementById('loginErrorMessage');
+  
+    const profileImage = document.getElementById('profileImage');
+    const profileImageUpload = document.getElementById('profileImageUpload');
+    const profileNameDisplay = document.getElementById('profileNameDisplay');
+    const profileNameInput = document.getElementById('profileNameInput');
+    const profileLevelDisplay = document.getElementById('profileLevelDisplay');
+    const profileLevelInput = document.getElementById('profileLevelInput');
+    const profileEmailDisplay = document.getElementById('profileEmailDisplay');
+    const profilePhoneDisplay = document.getElementById('profilePhoneDisplay');
+    const profilePhoneInput = document.getElementById('profilePhoneInput');
+    const profileLocationDisplay = document.getElementById('profileLocationDisplay');
+    const profileLocationInput = document.getElementById('profileLocationInput');
+    const editProfileButton = document.getElementById('editProfileButton');
+    const saveProfileButton = document.getElementById('saveProfileButton');
+    const logoutButton = document.getElementById('logoutButton');
+    const statusMessage = document.getElementById('statusMessage');
+  
+    const loginFormContainer = document.getElementById('loginFormContainer');
+    const profileContent = document.getElementById('profileContent');
+    const editAvatarLabel = document.querySelector('.edit-avatar-label'); 
+    const homeRedirectLink = document.getElementById('homeRedirectLink');
+  
+    let currentUserId = null;
+    let currentProfileData = {};
+    let isEditing = false;
+    let userRole = 'hiker'; // default role
+  
+    function toggleEditMode(editing) {
+      isEditing = editing;
+      profileNameDisplay.classList.toggle('hidden', editing);
+      profileNameInput.classList.toggle('hidden', !editing);
+      profileLevelDisplay.classList.toggle('hidden', editing);
+      profileLevelInput.classList.toggle('hidden', !editing);
+      profilePhoneDisplay.classList.toggle('hidden', editing);
+      profilePhoneInput.classList.toggle('hidden', !editing);
+      profileLocationDisplay.classList.toggle('hidden', editing);
+      profileLocationInput.classList.toggle('hidden', !editing);
+      editProfileButton.classList.toggle('hidden', editing);
+      saveProfileButton.classList.toggle('hidden', !editing);
+      editAvatarLabel.classList.toggle('hidden', !editing);
+      profileImageUpload.classList.toggle('hidden', !editing);
+    }
+  
+    function updateProfileUI(data) {
+      profileImage.src = data.profileImageUrl || 'https://placehold.co/100x100/A0A0A0/FFFFFF?text=Profile';
+      profileNameDisplay.textContent = data.fullName || 'No Name';
+      profileNameInput.value = data.fullName || '';
+      profileLevelDisplay.textContent = data.level || '';
+      profileLevelInput.value = data.level || '';
+      profileEmailDisplay.textContent = data.email || '';
+      profilePhoneDisplay.textContent = data.phone || '';
+      profilePhoneInput.value = data.phone || '';
+      profileLocationDisplay.textContent = data.location || '';
+      profileLocationInput.value = data.location || '';
+    }
+  
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUserId = user.uid;
+        let docRef = doc(db, "users", user.uid);
+        let snap = await getDoc(docRef);
+  
+        if (!snap.exists()) {
+          docRef = doc(db, "organizer", user.uid);
+          snap = await getDoc(docRef);
+          if (snap.exists()) userRole = "organizer";
+        } else {
+          userRole = "hiker";
+        }
+  
+        currentProfileData = snap.exists() ? snap.data() : {
+          fullName: "",
+          email: user.email,
+          level: "",
+          phone: "",
+          location: "",
+          profileImageUrl: ""
+        };
+  
+        updateProfileUI(currentProfileData);
+        profileContent.classList.remove('hidden'); 
+        loginFormContainer.classList.add('hidden'); 
+        toggleEditMode(false); 
+      } else {
+        profileContent.classList.add('hidden'); 
+        loginFormContainer.classList.remove('hidden'); 
+        toggleEditMode(false); 
+      }
+    });
+  
+    homeRedirectLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (userRole === "organizer") {
+        window.location.href = "organizer.html";
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+  
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginErrorMessage.classList.add('hidden');
+      try {
+        await signInWithEmailAndPassword(auth, loginEmailInput.value, loginPasswordInput.value);
+      } catch (e) {
+        loginErrorMessage.textContent = "Login failed: " + e.message;
+        loginErrorMessage.classList.remove('hidden');
+      }
+    });
+  
+    editProfileButton.addEventListener('click', () => toggleEditMode(true));
+  
+    saveProfileButton.addEventListener('click', async () => {
+      currentProfileData.fullName = profileNameInput.value;
+      currentProfileData.level = profileLevelInput.value;
+      currentProfileData.phone = profilePhoneInput.value;
+      currentProfileData.location = profileLocationInput.value;
+  
+      let userDoc = doc(db, "users", currentUserId);
+      let orgDoc = doc(db, "organizer", currentUserId);
+      let snap = await getDoc(userDoc);
+      let destDoc = snap.exists() ? userDoc : orgDoc;
+  
+      try {
+        await setDoc(destDoc, currentProfileData, { merge: true });
+        updateProfileUI(currentProfileData);
+        toggleEditMode(false);
+        statusMessage.textContent = "Profile updated!";
+        statusMessage.classList.remove('hidden');
+        setTimeout(() => statusMessage.classList.add('hidden'), 2000);
+      } catch (error) {
+        statusMessage.textContent = "Error saving profile: " + error.message;
+        statusMessage.classList.remove('hidden');
+        setTimeout(() => statusMessage.classList.add('hidden'), 3000);
+      }
+    });
+  
+    logoutButton.addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+        window.location.href = 'index.html'; 
+      } catch (error) {
+        console.error("Logout error:", error);
+      }
+    });
+  
+    profileImageUpload.addEventListener('change', async (event) => {
+      const file = event.target.files[0];
+      if (!file || !currentUserId) return;
+  
+      const filePath = `users/${currentUserId}/profile.png`;
+      statusMessage.textContent = "Uploading image...";
+      statusMessage.classList.remove('hidden');
+  
+      try {
+        const { error: uploadError } = await supabase.storage.from('profile-images').upload(filePath, file, {
+          upsert: true,
+          cacheControl: '3600'
+        });
+  
+        if (uploadError) throw uploadError;
+  
+        const { data: urlData } = supabase.storage.from('profile-images').getPublicUrl(filePath);
+        currentProfileData.profileImageUrl = urlData.publicUrl;
+  
+        let userDoc = doc(db, "users", currentUserId);
+        let orgDoc = doc(db, "organizer", currentUserId);
+        let snap = await getDoc(userDoc);
+        let destDoc = snap.exists() ? userDoc : orgDoc;
+        await setDoc(destDoc, { profileImageUrl: urlData.publicUrl }, { merge: true });
+  
+        updateProfileUI(currentProfileData);
+        statusMessage.textContent = "Profile image updated!";
+        setTimeout(() => statusMessage.classList.add('hidden'), 2000);
+      } catch (error) {
+        statusMessage.textContent = "Image upload failed: " + error.message;
+        setTimeout(() => statusMessage.classList.add('hidden'), 3000);
+        console.error("Supabase upload error:", error);
+      }
+    });
+  
+    [profileNameInput, profileLevelInput, profilePhoneInput, profileLocationInput].forEach(input => {
+      input.addEventListener('input', (e) => {
+        currentProfileData[e.target.name] = e.target.value;
+      });
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* Color Palette Variables */
+:root {
+    --primary-dark-green: #0D3B13;
+    --primary-base-green: #2E7D32;
+    --primary-light-green: #A5D6A7;
+    --primary-extra-light-green: #E8F5E9;
+    --secondary-base-brown: #4A3118;
+    --light-grey-background: #f0f0f0;
+    --text-color: #333;
+    --light-text-color: #666;
+    --white-color: #fff;
+    --border-color: #ddd;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-extra-light-green);
+}
+
+/* --- HEADER STYLES (CORRECTED PADDING) --- */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* CORRECTED: Reduced horizontal padding */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+    transition: background-color 0.3s ease;
+}
+
+.site-header .logo img {
+    height: 60px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Makes logo white */
+}
+
+.site-header .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.site-header .nav-link {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+
+.site-header .nav-link:hover {
+    color: var(--primary-light-green);
+}
+
+/* New: Styling for the 'Profile' link when it acts as a 'Login' button (optional) */
+.site-header .login-btn { /* Re-using this class name for styling consistency */
+    background-color: var(--primary-base-green);
+    padding: 8px 24px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.site-header .login-btn:hover {
+    background-color: var(--primary-light-green);
+    color: var(--primary-dark-green);
+}
+
+
+/* Hamburger Menu Icon (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60vh; /* Adjust height as needed */
+    padding: 120px 40px 40px;
+    color: var(--white-color);
+    background: url('https://picsum.photos/id/20/1600/900') no-repeat center center/cover;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-section .mission-text {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* --- MAIN PAGE CONTENT --- */
+.page-content {
+    padding: 40px;
+    background-color: var(--primary-extra-light-green);
+}
+
+/* Stats Section */
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 30px;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+}
+
+.stat-item .stat-number {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--primary-base-green);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-item .stat-label {
+    font-size: 1em;
+    color: var(--light-text-color);
+    display: block;
+}
+
+/* Why Choose Us & Social Sections */
+.why-choose-us-section, .social-section {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.why-choose-us-section h2 {
+    font-size: 2em;
+    color: var(--primary-dark-green);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.why-choose-us-section p {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.social-section {
+    text-align: center;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 20px 0;
+    color: var(--light-text-color);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    font-size: 1.5em;
+}
+
+.social-icons a {
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-base-green);
+}
+
+
+/* --- RESPONSIVE STYLES (MOBILE) --- */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 15px 20px;
+        background-color: var(--primary-dark-green); /* Solid background on mobile */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+        z-index: 1001; /* Ensure it's clickable */
+    }
+
+    .menu-toggle.active i::before {
+        content: '\f00d'; /* Change to 'X' icon when menu is open */
+    }
+
+    .site-header .main-nav {
+        display: none; /* Hide nav by default */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 70%;
+        height: 100vh;
+        background-color: var(--primary-dark-green);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease-in-out;
+    }
+
+    .site-header .main-nav.active {
+        display: flex; /* Show nav when active */
+        right: 0; /* Slide in from the right */
+    }
+
+    .site-header .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .hero-section {
+        min-height: 40vh;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+
+    .page-content {
+        padding: 20px;
+    }
+
+    .stats-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-item {
+        width: 100%;
+        max-width: 350px;
+    }
+}

@@ -1,0 +1,672 @@
+/* Color Palette Variables */
+:root {
+    /* Primary Colors */
+    --primary-dark-green: #0D3B13;
+    --primary-medium-green: #1B5E20;
+    --primary-base-green: #2E7D32; /* Main green for buttons, accents */
+    --primary-light-green: #A5D6A7;
+    --primary-extra-light-green: #E8F5E9; /* Backgrounds, light elements */
+
+    /* Secondary Colors */
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-medium-brown: #36230D;
+    --secondary-base-brown: #4A3118; /* Text, darker elements */
+    --secondary-light-brown: #C8B6A6;
+    --secondary-extra-light-brown: #F5EDE6; /* Light backgrounds, borders */
+
+    /* General Text Color */
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --white: #fff;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-extra-light-green);
+}
+
+/* Header */
+header {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--primary-dark-green);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+    margin-right: auto;
+}
+
+header .main-nav {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin-left: auto; /* Push nav to the right */
+}
+
+header .main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative;
+}
+
+header .header-icons {
+    margin-left: 25px;
+}
+
+header .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header .main-nav a:hover {
+    color: var(--primary-light-green);
+}
+
+header .header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2em;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 40px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-navigation .tab {
+    background: none;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none   ;
+    color: var(--light-text-color);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-navigation .tab.active {
+    color: var(--primary-base-green);
+    border-bottom-color: var(--primary-base-green);
+}
+
+.tab-navigation .tab:hover:not(.active) {
+    color: var(--text-color);
+}
+
+/* Main Content Wrapper (Flexbox for two columns) */
+.content-wrapper {
+    display: flex;
+    padding: 20px 40px;
+    gap: 30px;
+    align-items: flex-start; /* Align items to the top */
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    flex: 0 0 300px; /* Fixed width for sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.trail-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+    padding-bottom: 20px; /* Space for button */
+}
+
+.card-image-placeholder {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistency */
+    background-color: var(--secondary-light-brown); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.photo-count {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+.trail-card h2 {
+    font-size: 1.3em;
+    margin: 0 15px 8px 15px;
+    font-family: Montserrat;
+    color: var(--primary-dark-green);
+}
+
+.trail-card .rating {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    margin: 0 15px 15px 15px;
+}
+
+.trail-card .rating span {
+    color: gold; /* For stars */
+}
+#profile-color {
+  color: white;
+}
+
+
+.hit-the-trail-btn {
+    display: block;
+    width: calc(100% - 30px); /* Full width minus padding */
+    margin: 0 15px;
+    padding: 12px 20px;
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+
+.hit-the-trail-btn:hover {
+    background-color: var(--primary-medium-green);
+}
+
+.recommendations {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.recommendations h3 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: var(--primary-dark-green);
+}
+
+/* Updated styles for recommendation points */
+.recommendations .recommendation-points {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.recommendations .recommendation-points li {
+    font-size: 0.95em;
+    color: var(--text-color);
+    margin-bottom: 10px; /* Space between points */
+    position: relative;
+    padding-left: 15px; /* Space for custom bullet */
+}
+
+.recommendations .recommendation-points li::before {
+    content: '•'; /* Unicode character for a bullet point */
+    color: var(--primary-base-green); /* Color of the bullet */
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* In your trips-overview.css file */
+
+.chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    background-color: #E8F5E9;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: fixed; /* Makes it stick */
+    bottom: 20px;    /* Distance from bottom */
+    right: 20px;     /* Distance from right */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 1000;   /* Keep it above other elements */
+}
+
+/* Blinking animation on hover */
+.chat-btn:hover {
+    transform: scale(1.05);
+  transition: transform 0.3s ease;
+  background-color: #2E7D32;
+    color: white;
+}
+
+/* Style for the icon inside the button */
+.chat-btn .fas {
+    margin-right: 8px;
+}
+
+
+
+/* Style for the icon inside the button */
+.chat-btn .fas {
+    margin-right: 8px; /* Adds space between the icon and the text */
+}
+/* Main Trail Information */
+.main-trail-info {
+    flex: 1; /* Takes up remaining space */
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 30px;
+}
+
+.main-trail-info h1 {
+    font-size: 2em;
+    color: var(--primary-dark-green);
+    margin-bottom: 5px;
+}
+
+.main-trail-info .organizer-name {
+    color: var(--light-text-color);
+    margin-bottom: 25px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Large image, then two smaller ones stacked */
+    grid-template-rows: auto auto;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.large-image-placeholder {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; /* Spans two rows */
+    background-color: var(--primary-light-green); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.large-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.small-image-placeholder,
+.map-placeholder {
+    background-color: var(--secondary-light-brown); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.small-image-placeholder img,
+.map-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-overlay-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.key-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--primary-extra-light-green);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.key-stats .stat-item {
+    flex: 1;
+}
+
+.key-stats .stat-item:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+.key-stats .value {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--primary-base-green);
+}
+
+.key-stats .label {
+    display: block;
+    font-size: 0.85em;
+    color: var(--light-text-color);
+}
+
+.trail-description {
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.essential-visitor-info {
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+}
+
+.essential-visitor-info h2 {
+    font-size: 1.4em;
+    color: var(--primary-dark-green);
+    margin-bottom: 20px;
+}
+
+.info-category {
+    margin-bottom: 20px;
+}
+
+.info-category h3 {
+    font-size: 1.1em;
+    color: var(--primary-base-green);
+    margin-bottom: 10px;
+}
+
+/* Updated styles for points instead of checkboxes */
+.info-category .info-points {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for multiple points */
+    gap: 20px; /* Space between points */
+}
+
+.info-category .info-points li {
+    font-size: 0.95em;
+    color: var(--text-color);
+    /* Add a custom bullet point if desired */
+    position: relative;
+    padding-left: 15px; /* Space for custom bullet */
+}
+
+.info-category .info-points li::before {
+    content: '•'; /* Unicode character for a bullet point */
+    color: var(--primary-base-green); /* Color of the bullet */
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* Responsive adjustments (basic) */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left-sidebar {
+        flex: none; /* Remove fixed width */
+        width: 100%;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr; /* Stack images on smaller screens */
+        grid-template-rows: auto;
+    }
+
+    .large-image-placeholder {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+
+    .small-image-placeholder,
+    .map-placeholder {
+        height: 200px; /* Adjust height for smaller images */
+    }
+}
+
+@media (max-width: 600px) {
+  .main-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome/Safari */
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .main-nav li {
+    flex: 0 0 auto;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+    color: var(--primary-dark-green);
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--primary-base-green);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background: var(--primary-medium-green);
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    font-weight: bold;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+
+  @media (max-width: 768px) {
+  header {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 20px;
+  }
+
+  header .main-nav ul {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+
+  .tab-navigation {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .tab-navigation .tab {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .key-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .left-sidebar {
+    width: 100%;
+  }
+
+  .chat-btn {
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 15px;
+  }
+
+  header .main-nav {
+    display: flex !important;
+    flex-wrap: nowrap;
+    gap: 15px;
+    overflow-x: auto;
+  }
+
+  .content-wrapper {
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  .map-overlay-text {
+    font-size: 0.7em;
+    padding: 3px 7px;
+  }
+
+  .trail-card h2 {
+    font-size: 1.1em;
+  }
+}
+

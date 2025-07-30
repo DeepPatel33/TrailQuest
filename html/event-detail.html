@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Detail | Trail Quest</title>
+  <link rel="stylesheet" href="../css/event-detail.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <header class="top-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="../Image/logo.png" alt="Trail Quest Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="organizer.html">Home</a>
+        <a href="chat.html" class="icon"><i class="fas fa-comments"></i></a>
+        <a href="profile.html" class="icon"><i class="fas fa-user-circle"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="event-detail-container">
+    <div class="event-header">
+      <h1 id="tripTitle">Loading...</h1>
+      <div class="event-actions">
+        <button id="editBtn">Edit</button>
+        <button id="viewHikersBtn">View Registered Hikers</button>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab active" data-tab="details">Details</button>
+      <button class="tab" data-tab="photos">Photos</button>
+      <button class="tab" data-tab="contact">Contact</button>
+    </div>
+
+    <section class="tab-section active" id="detailsTab">
+      <p><strong>Location:</strong> <span id="tripLocation">Loading...</span></p>
+      <p><strong>Length:</strong> <span id="tripLength">Loading...</span> km</p>
+      <p><strong>Estimated Time:</strong> <span id="tripTime">Loading...</span></p>
+      <p><strong>Difficulty:</strong> <span id="tripDifficulty">Loading...</span></p>
+      <p><strong>Trip Type:</strong> <span id="tripType">Loading...</span></p>
+      <p><strong>Features:</strong> <span id="tripFeatures">Loading...</span></p>
+      <p><strong>Activities:</strong> <span id="tripActivities">Loading...</span></p>
+      <p><strong>Weather Conditions:</strong> <span id="tripWeather">Loading...</span></p>
+      <p><strong>Trail Info:</strong> <span id="tripTrailInfo">Loading...</span></p>
+      <p><strong>Other Descriptions:</strong> <span id="tripOtherDescriptions">Loading...</span></p>
+      <p><strong>Comments:</strong> <span id="tripComments">Loading...</span></p>
+    </section>
+
+    <section class="tab-section" id="photosTab">
+      <div id="tripPhotos" class="photo-gallery">Loading photos...</div>
+    </section>
+
+    <section class="tab-section" id="contactTab">
+      <p><strong>Contact Name:</strong> <span id="organizerName">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="organizerEmail">Loading...</span></p>
+      <p><strong>Phone:</strong> <span id="organizerPhone">Loading...</span></p>
+      <p><strong>Group Size:</strong> <span id="groupSize">Loading...</span></p>
+    </section>
+  </main>
+
+  <!-- ✅ Edit Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModalBtn">&times;</button>
+      <h2>Edit Trip</h2>
+      <form id="editForm">
+        <label>Trip Name: <input type="text" name="tripName" required /></label>
+        <label>City/Place: <input type="text" name="cityPlace" /></label>
+        <label>Length (km): <input type="number" name="length" /></label>
+        <label>Estimated Time (hrs): <input type="text" name="estimatedTime" /></label>
+        <label>Difficulty: <input type="text" name="difficulty" /></label>
+        <label>Trip Type: <input type="text" name="tripType" /></label>
+        <label>Features (comma-separated): <input type="text" name="features" /></label>
+        <label>Activities: <input type="text" name="activities" /></label>
+        <label>Weather Conditions: <input type="text" name="weatherConditions" /></label>
+        <label>Trail Info: <textarea name="trailInfo"></textarea></label>
+        <label>Other Descriptions: <textarea name="otherDescriptions"></textarea></label>
+        <label>Comments: <textarea name="comments"></textarea></label>
+        <label>Contact Name: <input type="text" name="fullName" /></label>
+        <label>Email: <input type="email" name="email" /></label>
+        <label>Phone: <input type="text" name="phone" /></label>
+        <label>Group Size: <input type="number" name="groupSize" /></label>
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="trail-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="../Image/logo.png" alt="Trail Quest Logo" class="footer-logo" />
+        <p class="footer-vision">Our vision is to provide good<br />experience for hikers !</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy;2025 Trail Quest. All rights reserved</p>
+        <div class="footer-links">
+          <a href="#">Privacy & Policy</a>
+          <a href="#">Terms & Condition</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/event-detail.js" defer></script>
+</body>
+</html>

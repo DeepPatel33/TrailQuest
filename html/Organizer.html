@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hike Smarter, Explore Safer</title>
+  <link rel="stylesheet" href="../css/Organizer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <!-- ✅ Header -->
+  <header class="top-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="../Image/logo.png" alt="Trail Quest Logo" />
+      </div>
+      <nav class="nav-links desktop-only">
+        <a href="create-event.html">Create Event</a>
+        <a href="chat.html" class="icon"><i class="fas fa-comments"></i></a>
+        <a href="profile.html" class="icon"><i class="fas fa-user-circle"></i></a>
+      </nav>
+      <div class="mobile-nav-toggle">
+        <i class="fas fa-bars" id="openMenuBtn"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>"Hike Smarter, Explore Safer"</h1>
+      <h2>Real-time trail alerts • Verified community • Offline-ready maps</h2>
+      <p>“Never fear a closed trail again. Get live updates from rangers and hikers.”</p>
+    </div>
+  </section>
+
+  <!-- ✅ Trip List Section -->
+  <section class="hiking-vacations">
+    <div class="container">
+      <h2>Your Hikes</h2>
+      <div class="cards-grid" id="trip-list">
+        <!-- Trip cards will be dynamically inserted here -->
+      </div>
+
+      <!-- ✅ Banner if no trips found -->
+      <div id="no-trips-banner" class="no-trips-banner" style="display: none;">
+        <h3>You haven’t created any trips yet!</h3>
+        <p>Start your journey by creating your first hike.</p>
+        <a href="create-event.html" class="create-btn">Create Your First Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer class="trail-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="../Image/logo.png" alt="Trail Quest Logo" class="footer-logo" />
+        <p class="footer-vision">Our vision is to provide good<br />experience for hikers !</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy;2025 Trail Quest. All rights reserved</p>
+        <div class="footer-links">
+          <a href="#">Privacy & Policy</a>
+          <a href="#">Terms & Condition</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Mobile Menu -->
+  <div id="menuModal" class="menu-modal">
+    <div class="menu-drawer">
+      <i class="fas fa-times close-menu-icon" id="closeMenuBtn"></i>
+      <ul class="menu-list">
+        <li><a href="../profile/profile.html">Profile</a></li>
+        <li><a href="create-event.html">Create Event</a></li>
+        <li><a href="chat.html">My chats</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script type="module" src="../js/Organizer.js" defer></script>
+  <script>
+    document.getElementById("openMenuBtn").addEventListener("click", () => {
+      document.getElementById("menuModal").classList.add("active");
+    });
+
+    document.getElementById("closeMenuBtn").addEventListener("click", () => {
+      document.getElementById("menuModal").classList.remove("active");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailquest - Home</title>
+    <link rel="stylesheet" href="../css/why-choose-us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/script.js"></script>
+    <!-- PWA Manifest & Theme -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <img src="../Image/logo.png" alt="logo">
+        </div>
+        <nav class="main-nav">
+            <a href="../html/index.html" class="nav-link active">Home</a>
+            <a href="../html/profile.html" class="nav-link" id="profile">Profile</a>
+            <a href="#" class="nav-link logout-btn" id="logoutLink" style="display: none;">Logout</a>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Where Stories and Trails Come Together</h1>
+                <p class="mission-text">Our mission: “Explore the Great Outdoors”</p>
+            </div>
+        </section>
+
+        <div class="page-content">
+            <section class="stats-section">
+                <div class="stat-item">
+                    <span class="stat-number">45</span>
+                    <span class="stat-label">trails</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">21</span>
+                    <span class="stat-label">explorer</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">420</span>
+                    <span class="stat-label">logged kilometers</span>
+                </div>
+            </section>
+
+            <section class="why-choose-us-section">
+                <h2>Why Choose Us</h2>
+                <p>
+                    Trail Quest is renowned for its immersive, family-friendly trails that seamlessly blend storytelling, exploration, and adventure. By offering a variety of trails aims to create memorable outdoor experiences for families, outdoor enthusiasts, and curious explorers. Many people choose a trail quest as a journey of self-discovery. Being alone in unfamiliar environments or outside of one’s comfort zone pushes individuals to confront their fears, doubts, and true identities—the trail becomes a mirror reflecting their inner world. For some, it’s a way to reset or heal. Others undertake trail quests to test their limits. These journeys serve as personal rites of passage, challenging people physically, mentally, and spiritually, and allowing them to prove something to themselves. The trail also offers a chance to reconnect with nature. Moreover, a trail quest offers an escape from routine. It breaks the cycle of daily obligations and introduces a sense of freedom—living moment by moment with a backpack and a path ahead. Even when walking solo, trail quests often foster unexpected human connections. Shared experiences and mutual support on the trail create deep bonds, reminding people they are part of something greater than themselves...
+                </p>
+            </section>
+
+            <section class="social-section">
+                <p>Share your next adventure with #trailquest on Social media</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // --- New JavaScript for Profile/Logout State ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileOrAuthLink = document.getElementById('profileOrAuthLink');
+            const logoutLink = document.getElementById('logoutLink');
+
+            // Function to check login status (simplified for demonstration)
+            function isUserLoggedIn() {
+                // For demonstration: Assume logged in if 'isLoggedIn' is true in localStorage
+                return localStorage.getItem('isLoggedIn') === 'true';
+            }
+
+            // Function to update the navigation based on login status
+            function updateNavLinks() {
+                if (isUserLoggedIn()) {
+                    // User is logged in:
+                    profileOrAuthLink.href = "/html/profile.html";
+                    profileOrAuthLink.textContent = "Profile";
+                    profileOrAuthLink.classList.remove('login-btn'); // Remove login button styling if it was there
+
+                    // Show logout link
+                    logoutLink.style.display = 'block';
+                    logoutLink.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default link behavior
+                        localStorage.removeItem('isLoggedIn'); // Clear login status
+                        // Optionally, clear other user data from localStorage/sessionStorage
+                        window.location.href = '/html/index.html'; // Redirect to home page after logout
+                        updateNavLinks(); // Update links immediately after logout
+                    });
+
+                } else {
+                    // User is not logged in:
+                    profileOrAuthLink.href = "/html/auth.html";
+                    profileOrAuthLink.textContent = "Profile"; // Still "Profile", but links to auth
+                    profileOrAuthLink.classList.add('login-btn'); // Optionally re-add login button styling if you want "Profile" to look like a button when logged out
+
+                    // Hide logout link
+                    logoutLink.style.display = 'none';
+                }
+            }
+
+            // Call the function on page load
+            updateNavLinks();
+
+            // IMPORTANT:
+            // When a user successfully logs in on /html/auth.html, you must:
+            // localStorage.setItem('isLoggedIn', 'true');
+            // window.location.href = '/html/index.html'; // Redirect to home or profile page
+        });
+    </script>
+
+</body>
+</html>

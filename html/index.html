@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hike Smarter, Explore Safer</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/auth.js" defer></script>
+    <script type="module" src="../js/script.js" defer></script>
+    <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../Image/logo.png" alt="Logo" />
+            </div>
+            <nav class="nav-links">
+                <a href="../html/why-choose-us.html">About Us</a>
+                <span id="auth-links">
+</span>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-background-carousel">
+            <img src="../Image/mountain.webp" alt="Background Image 1">
+            <img src="../Image/lake.webp" alt="Background Image 2">
+            <img src="../Image/mountain.webp" alt="Background Image 1">
+            <img src="../Image/lake.webp" alt="Background Image 2">
+            
+        </div>
+        <div class="container">
+            <h1>Discover Your Next Adventure</h1>
+            <h2>Your ultimate guide to hiking adventures</h2>
+            <div class="search-and-filter-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for trails" id="searchInput">
+                    <i class="fas fa-search search-icon" id="searchIcon"></i>
+                </div>
+                <div class="filters">
+                    <button class="filter-button" id="openFiltersModal">
+                        <i class="fas fa-filter"></i> Filters
+                    </button>
+                </div>
+            </div>
+            <p class="hero-cta">Ready to start your adventure?</p>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Trail Quest Works</h2>
+            <p>Your journey to the perfect trail starts here. Simple steps to explore safely.</p>
+            <div class="steps-grid">
+                <div class="step">
+                    <img src="../Image/location.png" alt="Find Icon">
+                    <h3>Select Location</h3>
+                    <p>Find the perfect trail that matches your adventure level. Browse scenic spots, trail difficulty, and local highlights to pick your ideal hiking destination.</p>
+                </div>
+                <div class="step">
+                     <img src="../Image/notepad.png" alt="check Icon">
+                    <h3>Register For Trip</h3>
+                    <p>Secure your spot by signing up for the hike. Get access to complete trail maps, safety guidelines, and a hiking  community.</p>
+                </div>
+                <div class="step">
+                    <img src="../Image/car.png" alt="Review Icon">
+                    <h3>Prep Your Pack</h3>
+                    <p>Get your gear ready! Use our checklist to pack essentials like water, snacks, first-aid, and weather-appropriate clothing to stay prepared for your hike.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hiking-vacations">
+        <div class="container">
+            <h2>Start your Journey</h2>
+            <p>Find your perfect trail today</p>
+<main>
+    <div id="trip-list" class="trip-list">
+      </div>
+ </main>
+ <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+            <strong><a href="after-search.html" class="discover-trails-btn">See More</a> </div></strong>
+        </div>
+    </section>
+
+    <section class="hikers-reviews">
+        <div class="container">
+            <h2>What Hikers Are Saying</h2>
+            <p>Hear from our community of passionate explorers.</p>
+            <div class="review-headers">
+                <span>"Great app for finding new trails!"</span>
+                <span>"Real-time conditions are a lifesaver."</span>
+                <span>"Love the detailed reviews and photos."</span>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <h4>Sarah L.</h4>
+                    <p>"TrailStride has completely changed how I plan my hikes. The filters are so useful, and I love being able to check real-time conditions before I head out."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Mark T.</h4>
+                    <p>"The best hiking app I've used! The community updates on trail conditions are incredibly helpful, especially for less common routes. Highly recommend!"</p>
+                </div>
+                <div class="review-card">
+                    <h4>Emily R.</h4>
+                    <p>"I rely on TrailStride for all my hiking adventures. It's easy to use, and the detailed trail information makes planning a breeze. Plus, the review section is fantastic!"</p>
+                </div>
+            </div>
+            </div>
+    </section>
+    <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="../Image/logo.png" alt="Trail Quest Logo" class="footer-logo" />
+        <p class="footer-vision">Our vision is to provide good<br />experience for hikers !</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy;2025 Trail Quest. All rights reserved</p>
+        <div class="footer-links">
+          <a href="#">Privacy & Policy</a>
+          <a href="#">Terms & Condition</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <div id="filtersModal" class="modal-overlay">
+        <div class="filters-container">
+            <div class="filters-header">
+                <h2>Filters</h2>
+                <span class="close-icon" id="closeFiltersModal">&times;</span>
+            </div>
+            <div class="filter-section">
+                <h3>Trail Type</h3>
+                <div class="amenities-options" id="trailTypeFilters">
+                    <span class="filter-tag">Mountain</span>
+                    <span class="filter-tag">Coastal</span>
+                    <span class="filter-tag">Forest</span>
+                    <span class="filter-tag">Desert</span>
+                    <span class="filter-tag">Lake</span>
+                    <span class="filter-tag">River</span>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3>Trip Type</h3>
+                <div class="trip-options" id="tripTypeFilters">
+                    <span class="filter-tag">Day Hike</span>
+                    <span class="filter-tag">Overnight</span>
+                    <span class="filter-tag">Multi-day</span>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3>Difficulty</h3>
+                <div class="difficulty-slider-container">
+                    <input type="range" min="1" max="3" value="1" class="difficulty-slider" id="difficultyRange">
+                    <div class="difficulty-labels">
+                        <span>Easy</span>
+                        <span>Moderate</span>
+                        <span>Hard</span>
+                    </div>
+                </div>
+            </div>
+            <button class="submit-button" id="applyFiltersBtn">Apply Filters</button>
+        </div>
+    </div>
+    <script type="module">
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const authLinks = document.getElementById("auth-links");
+            const openFiltersModalBtn = document.getElementById("openFiltersModal");
+            const filtersModal = document.getElementById("filtersModal");
+            const closeFiltersModalBtn = document.getElementById("closeFiltersModal");
+            const searchInput = document.getElementById("searchInput"); // Get the search input
+            const discoverTrailsBtn = document.getElementById("discoverTrailsBtn"); // Get the Discover Trails button
+            const searchIcon = document.getElementById("searchIcon"); // Get the new search icon
+            const applyFiltersBtn = document.getElementById("applyFiltersBtn"); // Get the Apply Filters button
+
+            // Function to handle search and redirection
+            function performSearch(fromFilterApplication = false) {
+                const query = searchInput.value.trim();
+                let url = 'after-search.html';
+                const params = new URLSearchParams();
+
+                if (query) {
+                    params.set("query", encodeURIComponent(query));
+                    // If a search query is entered, clear any previously applied filters from session storage
+                    // UNLESS this call is from the applyFiltersBtn (fromFilterApplication is true)
+                    if (!fromFilterApplication) {
+                        sessionStorage.removeItem('appliedFilters');
+                    }
+                } else {
+                    // If no search query, but filters are being applied, don't clear session storage
+                    if (!fromFilterApplication) {
+                       sessionStorage.removeItem('appliedFilters');
+                    }
+                }
+
+                if (params.toString()) {
+                    url += `?${params.toString()}`;
+                }
+                window.location.href = url;
+            }
+
+            // Event listener for the Discover Trails button
+            if (discoverTrailsBtn) {
+                discoverTrailsBtn.addEventListener("click", () => performSearch(false)); // Not from filter application
+            }   
+
+            // Event listener for the search icon click
+            if (searchIcon) {
+                searchIcon.addEventListener("click", () => performSearch(false)); // Not from filter application
+            }
+
+            // Event listener for Enter key in search input
+            if (searchInput) {
+                searchInput.addEventListener("keyup", (event) => {
+                    if (event.key === "Enter") {
+                        performSearch(false); // Not from filter application
+                    }
+                });
+            }
+
+            openFiltersModalBtn.addEventListener("click", () => {
+                filtersModal.style.display = "flex";
+            });
+
+            closeFiltersModalBtn.addEventListener("click", () => {
+                filtersModal.style.display = "none";
+            });
+
+            // Close modal if clicking outside the content
+            filtersModal.addEventListener("click", (e) => {
+                if (e.target === filtersModal) {
+                    filtersModal.style.display = "none";
+                }
+            });
+
+            // Handle filter tag selection
+            document.querySelectorAll(".filter-tag").forEach(tag => {
+                tag.addEventListener("click", () => {
+                    tag.classList.toggle("selected");
+                });
+            });
+
+            // --- Apply Filters Logic ---
+            if (applyFiltersBtn) {
+                applyFiltersBtn.addEventListener("click", () => {
+                    const selectedTrailTypes = Array.from(document.querySelectorAll('#trailTypeFilters .filter-tag.selected'))
+                                                    .map(tag => tag.textContent.trim());
+                    const selectedTripTypes = Array.from(document.querySelectorAll('#tripTypeFilters .filter-tag.selected'))
+                                                   .map(tag => tag.textContent.trim());
+                    const difficultyValue = document.getElementById('difficultyRange').value;
+                    const difficultyLabels = ['Easy', 'Moderate', 'Hard'];
+                    const selectedDifficulty = difficultyLabels[parseInt(difficultyValue) - 1]; // Adjust for 1-based range
+
+                    const filters = {
+                        trailTypes: selectedTrailTypes,
+                        tripTypes: selectedTripTypes,
+                        difficulty: selectedDifficulty
+                    };
+
+                    sessionStorage.setItem('appliedFilters', JSON.stringify(filters));
+                    
+                    // Redirect to after-search.html, also passing the search query if present
+                    performSearch(true); // Call with true to indicate filters are being applied
+                });
+            }
+
+            // --- Image Slider Functionality ---
+            const sliderTrack = document.querySelector(".featured-hikes .slider-track");
+            const sliderDotsContainer = document.querySelector(".featured-hikes .slider-dots");
+            const sliderImages = document.querySelectorAll(".featured-hikes .slider-image");
+            const totalImages = sliderImages.length;
+            let currentSlide = 0; // Index of the current slide
+
+            // Function to update the slider position and active dot
+            function updateSlider() {
+                // Ensure sliderTrack and its children exist
+                if (!sliderTrack || sliderTrack.children.length === 0) return;
+
+                const cardWidth = sliderTrack.children[0].offsetWidth; // Get width of first card
+                const offset = -currentSlide * cardWidth; 
+                sliderTrack.style.transform = `translateX(${offset}px)`;
+
+                // Update active dot
+                document.querySelectorAll(".featured-hikes .slider-dots .dot").forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add("active");
+                    } else {
+                        dot.classList.remove("active");
+                    }
+                });
+            }
+            // Create slider dots dynamically
+            // Clear existing dots first if any (important for updates)
+            if(sliderDotsContainer) { // Check if element exists
+                sliderDotsContainer.innerHTML = '';
+                for (let i = 0; i < totalImages; i++) {
+                    const dot = document.createElement("span");
+                    dot.classList.add("dot");
+                    dot.dataset.index = i;
+                    dot.addEventListener("click", () => {
+                        currentSlide = i;
+                        updateSlider();
+                    });
+                    sliderDotsContainer.appendChild(dot);
+                }
+            }
+
+
+            // Auto-slide functionality
+            const autoSlideInterval = 3000; // Change slide every 3 seconds
+            let slideTimer;
+
+            function startAutoSlide() {
+                 if (totalImages > 0) { // Only start if there are images to slide
+                    slideTimer = setInterval(() => {
+                        currentSlide = (currentSlide + 1) % totalImages; // Loop back to start
+                        updateSlider();
+                    }, autoSlideInterval);
+                }
+            }
+
+            function stopAutoSlide() {
+                clearInterval(slideTimer);
+            }
+
+            // Optional: Pause auto-slide on hover
+            const sliderContainer = document.querySelector(".featured-hikes .slider-container");
+            if (sliderContainer) { // Check if element exists
+                sliderContainer.addEventListener("mouseenter", () => {
+                    stopAutoSlide();
+                });
+                sliderContainer.addEventListener("mouseleave", () => {
+                    startAutoSlide();
+                });
+            }
+
+
+            // Initial slider setup
+            updateSlider();
+            startAutoSlide(); // Start auto-slide on load
+
+            function showCustomAlert(message) {
+                const alertBox = document.createElement('div');
+                alertBox.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #333;
+                    color: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                    z-index: 2000;
+                    font-size: 1.1em;
+                    text-align: center;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+                `;
+                alertBox.textContent = message;
+                document.body.appendChild(alertBox);
+
+                // Fade in
+                setTimeout(() => {
+                    alertBox.style.opacity = 1;
+                }, 10);
+
+                // Fade out and remove after 2 seconds
+                setTimeout(() => {
+                    alertBox.style.opacity = 0;
+                    alertBox.addEventListener('transitionend', () => alertBox.remove());
+                }, 2000);
+            }
+        });
+</script>
+</body>
+
+</html>

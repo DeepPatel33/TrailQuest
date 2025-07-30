@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrailQuest - Create Event</title>
+  <link rel="stylesheet" href="../css/create-event.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="Organizer.html"><img src="../Image/logo.png" alt="TrailQuest Logo" /></a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="Organizer.html">Home</a></li>
+        <a href="profile.html" class="icon"><i class="fas fa-user-circle"></i></a>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <form class="organiser-form" method="POST" action="#">
+      <h2>Organize a New Trip</h2>
+
+      <!-- Trip Details -->
+      <fieldset class="form-section">
+        <legend>Trip Details</legend>
+        <div class="form-group">
+          <label for="trip-name">Trip Name:</label>
+          <input type="text" id="trip-name" name="trip-name" required />
+        </div>
+        <div class="form-group">
+          <label for="organiser-name">Organizer Name:</label>
+          <input type="text" id="organiser-name" name="organiser-name" required />
+        </div>
+        <div class="form-group">
+          <label for="city-place">City/Place:</label>
+          <input type="text" id="city-place" name="city-place" required />
+        </div>
+        <div class="form-group-inline">
+          <div class="form-group">
+            <label for="length">Length (e.g., 5 km):</label>
+            <input type="text" id="length" name="length" />
+          </div>
+          <div class="form-group">
+            <label for="estimated-time">Estimated Time (e.g., 3 hours):</label>
+            <input type="text" id="estimated-time" name="estimated-time" />
+          </div>
+        </div>
+        <div class="form-group-inline date-time-group">
+          <div class="form-group">
+            <label for="trip-date">Date:</label>
+            <input type="date" id="trip-date" name="trip-date" required />
+          </div>
+          <div class="form-group">
+            <label for="trip-time">Time:</label>
+            <input type="time" id="trip-time" name="trip-time" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trail-info">Trail Information:</label>
+          <textarea id="trail-info" name="trail-info" rows="4"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Trip Characteristics -->
+      <fieldset class="form-section">
+        <legend>Trip Characteristics</legend>
+
+        <div class="form-group">
+          <label>Difficulty:</label>
+          <div class="radio-group">
+            <input type="radio" id="beginner" name="difficulty" value="Easy" />
+            <label for="beginner">Easy</label>
+            <input type="radio" id="intermediate" name="difficulty" value="Moderate" />
+            <label for="intermediate">Moderate</label>
+            <input type="radio" id="extreme" name="difficulty" value="Hard" />
+            <label for="extreme">Hard</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Trip Type:</label>
+          <div class="radio-group">
+            <input type="radio" id="group-trip" name="trip-type" value="group" />
+            <label for="group-trip">Group Trip</label>
+            <input type="radio" id="solo-trip" name="trip-type" value="solo" />
+            <label for="solo-trip">Solo Trip</label>
+          </div>
+        </div>
+
+        <!-- ✅ Group Size toggled dynamically -->
+        <div class="form-group" id="group-size-wrapper" style="display: none;">
+          <label for="group-size">Group Size:</label>
+          <input type="number" id="group-size" name="group-size" min="2" max="50" value="2" />
+        </div>
+
+        <div class="form-group">
+          <label>Features:</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="water-sources" name="features[]" value="water-sources" />
+            <label for="water-sources">Water Sources</label>
+            <input type="checkbox" id="dog-friendly" name="features[]" value="dog-friendly" />
+            <label for="dog-friendly">Dog-Friendly</label>
+            <input type="checkbox" id="scenic-views" name="features[]" value="scenic-views" />
+            <label for="scenic-views">Scenic Views</label>
+            <input type="checkbox" id="wildlife" name="features[]" value="wildlife" />
+            <label for="wildlife">Wildlife</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="activities">Activities (comma-separated):</label>
+          <input type="text" id="activities" name="activities" placeholder="e.g., Hiking, Camping, Photography" />
+        </div>
+
+        <div class="form-group">
+          <label for="weather-conditions">Expected Weather Conditions:</label>
+          <textarea id="weather-conditions" name="weather-conditions" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Media & Descriptions -->
+      <fieldset class="form-section">
+        <legend>Media & Other Descriptions</legend>
+        <div class="form-group">
+          <label for="photos">Upload Photos:</label>
+          <input type="file" id="photos" name="photos" accept="image/*" multiple />
+        </div>
+        <div class="form-group">
+          <label for="other-descriptions">Additional Descriptions:</label>
+          <textarea id="other-descriptions" name="other-descriptions" rows="4"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Organizer Details -->
+      <fieldset class="form-section group-registration-details">
+        <legend>Organizer's Contact Details</legend>
+        <p>These details will be shared with group participants for coordination.</p>
+        <div class="form-group">
+          <label for="organizer-full-name">Your Full Name:</label>
+          <input type="text" id="organizer-full-name" name="organizer-full-name" />
+        </div>
+        <div class="form-group">
+          <label for="organizer-email">Your Email:</label>
+          <input type="email" id="organizer-email" name="organizer-email" />
+        </div>
+        <div class="form-group">
+          <label for="organizer-phone">Your Phone:</label>
+          <input type="tel" id="organizer-phone" name="organizer-phone" />
+        </div>
+      </fieldset>
+
+      <button type="submit" class="submit-trip-btn">Create Trip</button>
+    </form>
+  </main>
+
+  <!-- Script to toggle group fields -->
+  <script>
+    const tripTypeRadios = document.querySelectorAll('input[name="trip-type"]');
+    const groupSizeWrapper = document.getElementById("group-size-wrapper");
+    const groupSizeInput = document.getElementById("group-size");
+
+    function toggleGroupSizeVisibility() {
+      const isGroupTrip = document.getElementById("group-trip").checked;
+      groupSizeWrapper.style.display = isGroupTrip ? "block" : "none";
+      groupSizeInput.required = isGroupTrip;
+    }
+
+    tripTypeRadios.forEach((radio) => {
+      radio.addEventListener("change", toggleGroupSizeVisibility);
+    });
+
+    document.addEventListener("DOMContentLoaded", toggleGroupSizeVisibility);
+  </script>
+
+  <script type="module" src="../js/create-event.js"></script>
+</body>
+</html>

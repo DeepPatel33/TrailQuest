@@ -1,0 +1,553 @@
+/* Color Palette Variables (reusing from previous files for consistency) */
+:root {
+    /* Primary Colors */
+    --primary-dark-green: #0D3B13;
+    --primary-medium-green: #1B5E20;
+    --primary-base-green: #2E7D32; /* Main green for buttons, accents */
+    --primary-light-green: #A5D6A7;
+    --primary-extra-light-green: #E8F5E9; /* Backgrounds, light elements */
+
+    /* Secondary Colors */
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-medium-brown: #36230D;
+    --secondary-base-brown: #4A3118; /* Text, darker elements */
+    --secondary-light-brown: #C8B6A6;
+    --secondary-extra-light-brown: #F5EDE6; /* Light backgrounds, borders */
+
+    /* General Text Color */
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --white: #fff;
+    --star-color: #FFC107; /* Gold for stars */
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-extra-light-green); /* Light background for the page */
+}
+
+/* Main Header (New styles for global navigation) */
+.main-header {
+    background-color: var(--primary-dark-green);
+    color: var(--white);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-header .logo img {
+    height: 60px;
+    width: auto;
+}
+
+.main-header .logo a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-header .logo a:hover {
+    color: var(--primary-light-green);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-light-green);
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.main-nav ul li a:hover {
+    color: var(--primary-light-green);
+}
+
+.main-header .auth-buttons .login-btn {
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border: 1px solid var(--primary-base-green);
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-header .auth-buttons .login-btn:hover {
+    background-color: var(--primary-medium-green);
+    border-color: var(--primary-medium-green);
+}
+
+
+/* Reusable Button Styles */
+.btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-follow {
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border: 1px solid var(--primary-base-green);
+}
+
+.btn-follow:hover {
+    background-color: var(--primary-dark-green);
+    border-color: var(--primary-dark-green);
+}
+
+.btn-unfollow {
+    background-color: var(--white);
+    color: var(--primary-base-green);
+    border: 1px solid var(--primary-base-green);
+}
+
+.btn-unfollow:hover {
+    background-color: var(--primary-extra-light-green);
+}
+
+.btn-edit-profile {
+    background-color: var(--white);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 18px;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+.btn-edit-profile:hover {
+    background-color: var(--primary-extra-light-green);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.btn-icon:hover {
+    color: var(--primary-base-green);
+}
+
+
+/* Profile Hero Section */
+.profile-hero {
+    position: relative;
+    width: 100%;
+    background-color: var(--white);
+    padding-bottom: 20px; /* Space below content for elements extending below */
+}
+
+.hero-background {
+    width: 100%;
+    height: 250px; /* Adjust height of background image as needed */
+    overflow: hidden;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-header-content {
+    position: relative;
+    text-align: center;
+    margin-top: -80px; /* Pull avatar and content up over the background image */
+    padding: 0 20px;
+}
+
+.profile-avatar-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--white);
+    background-color: var(--white); /* Fallback background */
+    overflow: hidden;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-header-content h1 {
+    font-size: 2.2em;
+    color: var(--primary-dark-green);
+    margin-bottom: 5px;
+}
+
+.user-location {
+    font-size: 1.05em;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+.user-location i {
+    margin-right: 5px;
+    color: var(--primary-base-green);
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    background-color: var(--primary-extra-light-green);
+    border-radius: 8px;
+    margin: 20px auto 0 auto;
+    max-width: 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-dark-green);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    white-space: nowrap; /* Prevent "Followers" from wrapping */
+}
+
+/* Profile Tab Navigation */
+.profile-tab-navigation {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-top: 30px; /* Space between profile hero and tabs */
+}
+
+.profile-tab-navigation .tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.05em;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    white-space: nowrap;
+}
+
+.profile-tab-navigation .tab.active {
+    color: var(--primary-base-green);
+    border-bottom: 3px solid var(--primary-base-green);
+    font-weight: bold;
+}
+
+.profile-tab-navigation .tab:hover:not(.active) {
+    color: var(--primary-medium-green);
+}
+
+/* Profile Content Wrapper (for sections below tabs) */
+.profile-content-wrapper {
+    max-width: 900px; /* Max width for content area */
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 1.5em;
+    color: var(--primary-dark-green);
+}
+
+/* About Section */
+.about-section .card-body p {
+    font-size: 1em;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+/* Interests Section */
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background-color: var(--primary-light-green);
+    color: var(--primary-dark-green);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Badges Section */
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* At least 100px wide, distribute */
+    gap: 20px;
+    text-align: center;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 3px solid var(--primary-base-green); /* Badge border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-item p {
+    font-size: 0.9em;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+        align-items: center;
+    }
+
+    .main-header .auth-buttons {
+        margin-top: 15px;
+    }
+
+    .profile-hero {
+        padding-bottom: 15px;
+    }
+
+    .profile-header-content {
+        margin-top: -60px;
+    }
+
+    .profile-avatar-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-header-content h1 {
+        font-size: 1.8em;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%; /* Make buttons wider on small screens */
+        max-width: 250px;
+    }
+
+    .profile-stats {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px 0;
+        max-width: 300px;
+    }
+
+    .stat-item {
+        flex: 1 1 auto; /* Allow items to grow/shrink */
+    }
+
+    .profile-tab-navigation {
+        overflow-x: auto; /* Enable horizontal scrolling for tabs */
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .profile-tab-navigation .tab {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .profile-content-wrapper {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 1.3em;
+    }
+
+    .btn-icon {
+        font-size: 0.8em;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 15px;
+    }
+
+    .badge-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .badge-item p {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+    }
+    .main-header .logo {
+        font-size: 1.5em;
+    }
+    .main-nav ul li a {
+        font-size: 0.9em;
+    }
+    .main-header .auth-buttons .login-btn {
+        font-size: 0.9em;
+        padding: 6px 15px;
+    }
+
+    .profile-hero .hero-background {
+        height: 180px;
+    }
+
+    .profile-header-content {
+        margin-top: -50px;
+    }
+
+    .profile-avatar-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-header-content h1 {
+        font-size: 1.6em;
+    }
+
+    .user-location {
+        font-size: 0.9em;
+    }
+
+    .stat-number {
+        font-size: 1.2em;
+    }
+    .stat-label {
+        font-size: 0.8em;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-header h2 {
+        font-size: 1.1em;
+    }
+
+    .card-body p, .tag, .badge-item p {
+        font-size: 0.85em;
+    }
+}

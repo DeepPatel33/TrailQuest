@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+.top-navbar {
+  background-color: #1B5E20;
+  color: white;
+  padding: 15px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-left: 15px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* 🔍 Search Input */
+#searchInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 1rem;
+  margin: 10px 0 25px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* 👤 Hiker Card */
+.hiker-card {
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fdfdfd;
+}
+
+.hiker-card p {
+  margin: 5px 0;
+}
+
+/* ❌ Error */
+.error {
+  background: #ffdddd;
+  color: #900;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ⬇️ CSV Download Button */
+.download-btn {
+  background-color: #1B5E20;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.download-btn:hover {
+  background-color: #155c1c;
+}
+
+/* 🗑️ Delete Button */
+.delete-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.delete-btn:hover {
+  background: #b71c1c;
+}

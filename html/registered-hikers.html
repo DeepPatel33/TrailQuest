@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registered Hikers | Trail Quest</title>
+  <link rel="stylesheet" href="../css/registered-hikers.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <header class="top-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="../Image/logo.png" alt="Trail Quest Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="organizer.html">Back to Dashboard</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Registered Hikers</h2>
+
+    <!-- 🔍 Search Input -->
+    <input type="text" id="searchInput" placeholder="Search by name or email..." />
+
+    <!-- 👥 Dynamic List -->
+    <div id="hikerList">Loading hikers...</div>
+  </main>
+
+  <script type="module" src="../js/registered-hikers.js"></script>
+</body>
+</html>

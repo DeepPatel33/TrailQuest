@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailquest - Report Issue</title>
+    <link rel="stylesheet" href="../css/report-issue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/script.js"></script>
+    <!-- PWA Manifest & Theme -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../Image/logo.png" alt="logo">
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About Us</a>
+            </nav>
+            <div class="header-icons">
+                
+                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-bars mobile-menu-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="report-page-content">
+        <div class="tab-navigation">
+            <button class="tab">Overview</button>
+            <button class="tab">Conditions</button>
+            <button class="tab">Reviews</button>
+            <button class="tab active">Trail Updates</button>
+        </div>
+
+        <section class="report-issue-section">
+            <div class="report-header">
+                <h2>Report Issue</h2>
+            </div>
+
+            <form class="report-form">
+                <div class="form-section issue-details-section">
+                    <h3>Issue Details</h3>
+                    <div class="input-group">
+                        <label for="issueType">Issue Type</label>
+                        <select id="issueType" name="issueType">
+                            <option value="">Select Issue Type</option>
+                            <option value="obstacle">Obstacle on trail</option>
+                            <option value="muddy">Muddy Conditions</option>
+                            <option value="washout">Trail Washout</option>
+                            <option value="closed">Trail Closed</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Near Baden Powell Trailhead">
+                    </div>
+                </div>
+
+                <div class="form-section upload-section">
+                    <h3>Upload Photos/Videos</h3>
+                    <div class="upload-area">
+                        <input type="file" id="mediaUpload" name="media" accept="image/*,video/*" multiple hidden>
+                        <label for="mediaUpload" class="upload-button">
+                            <i class="fas fa-upload"></i> Upload Photos/Videos
+                        </label>
+                        <div class="uploaded-previews" id="mediaPreviews">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="form-section description-section">
+                    <h3>Description</h3>
+                    <div class="textarea-wrapper">
+                        <textarea id="description" name="description" rows="6" placeholder="Provide a detailed description of the issue..."></textarea>
+                        <div class="word-count">0/200 Words</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-report-button">Report Issue</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // JavaScript for dynamic word count and file previews
+        const descriptionTextarea = document.getElementById('description');
+        const wordCountDisplay = document.querySelector('.word-count');
+        const maxWords = 200;
+
+        if (descriptionTextarea && wordCountDisplay) {
+            descriptionTextarea.addEventListener('input', () => {
+                const text = descriptionTextarea.value;
+                const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+                const currentWords = words.length;
+
+                if (currentWords > maxWords) {
+                    // Optionally truncate or just warn
+                    const truncatedText = words.slice(0, maxWords).join(' ');
+                    descriptionTextarea.value = truncatedText;
+                    wordCountDisplay.textContent = `${maxWords}/${maxWords} Words (Max Reached)`;
+                    wordCountDisplay.style.color = 'red';
+                } else {
+                    wordCountDisplay.textContent = `${currentWords}/${maxWords} Words`;
+                    wordCountDisplay.style.color = ''; // Reset color
+                }
+            });
+        }
+
+        const mediaUploadInput = document.getElementById('mediaUpload');
+        const mediaPreviewsContainer = document.getElementById('mediaPreviews');
+
+        if (mediaUploadInput && mediaPreviewsContainer) {
+            mediaUploadInput.addEventListener('change', (event) => {
+                mediaPreviewsContainer.innerHTML = ''; // Clear existing previews
+
+                const files = event.target.files;
+                if (files) {
+                    Array.from(files).forEach(file => {
+                        const fileReader = new FileReader();
+                        fileReader.onload = (e) => {
+                            const previewWrapper = document.createElement('div');
+                            previewWrapper.classList.add('preview-item');
+
+                            if (file.type.startsWith('image/')) {
+                                const img = document.createElement('img');
+                                img.src = e.target.result;
+                                previewWrapper.appendChild(img);
+                            } else if (file.type.startsWith('video/')) {
+                                const video = document.createElement('video');
+                                video.src = e.target.result;
+                                video.controls = true;
+                                previewWrapper.appendChild(video);
+                            }
+
+                            const removeBtn = document.createElement('span');
+                            removeBtn.classList.add('remove-preview');
+                            removeBtn.innerHTML = '&times;'; // 'x' icon
+                            removeBtn.addEventListener('click', () => {
+                                previewWrapper.remove();
+                                // Note: This doesn't reset the input file list itself,
+                                // which is tricky with file inputs. For a production app,
+                                // you'd manage files in a data structure.
+                            });
+                            previewWrapper.appendChild(removeBtn);
+                            mediaPreviewsContainer.appendChild(previewWrapper);
+                        };
+                        fileReader.readAsDataURL(file);
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

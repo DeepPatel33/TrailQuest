@@ -1,0 +1,574 @@
+/* ================== Color Palette ================== */
+:root {
+    --primary-dark-green: #0D3B13;
+    --primary-medium-green: #1B5E20;
+    --primary-base-green: #2E7D32;
+    --primary-light-green: #A5D6A7;
+    --primary-extra-light-green: #E8F5E9;
+  
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-medium-brown: #36230D;
+    --secondary-base-brown: #4A3118;
+    --secondary-light-brown: #C8B6A6;
+    --secondary-extra-light-brown: #F5EDE6;
+  
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --white: #fff;
+    --grey-background: #f0f0f0;
+  }
+  
+  /* ================ Global Reset ================ */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  #profile-color {
+    color: white;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-extra-light-green);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  /* ================ Header ================ */
+  header {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--primary-dark-green);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+    margin-right: auto;
+}
+
+header .main-nav {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin-left: auto; /* Push nav to the right */
+}
+
+header .main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative;
+}
+
+header .header-icons {
+    margin-left: 25px;
+}
+
+header .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header .main-nav a:hover {
+    color: var(--primary-light-green);
+}
+
+header .header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.2em;
+}
+  
+  /* ================ Tabs ================ */
+  .tab-navigation {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 40px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .tab {
+    padding: 15px 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--light-text-color);
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+  }
+  .tab.active {
+    color: var(--primary-base-green);
+    border-bottom-color: var(--primary-base-green);
+  }
+  
+  /* ================ Layout ================ */
+  .content-wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 20px 40px;
+    align-items: flex-start;
+  }
+  .left-sidebar {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* ================ Map + Warning Card ================ */
+  .warning-card {
+    background: var(--white);
+    padding: 20px;
+    border: 1px solid var(--secondary-light-brown);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .warning-icon {
+    font-size: 2.5em;
+    color: var(--secondary-base-brown);
+  }
+  .warning-card h3 {
+    font-size: 1.2em;
+    color: var(--secondary-base-brown);
+  }
+  .warning-card p {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+  }
+  .map-section {
+    background: var(--white);
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+  .open-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  .open-map-btn:hover {
+    background-color: var(--primary-dark-green);
+  }
+  
+  /* ================ Weather Section ================ */
+  .main-weather-info {
+    flex: 1;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .weather-header {
+    margin-bottom: 25px;
+  }
+  .weather-header h2 {
+    font-size: 2em;
+  }
+  .weather-header .location {
+    font-size: 1em;
+    color: var(--light-text-color);
+  }
+  .weather-day-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: var(--grey-background);
+    padding: 5px;
+    border-radius: 25px;
+  }
+  .day-tab {
+    padding: 8px 18px;
+    font-weight: bold;
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    border-radius: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .day-tab.active {
+    background: var(--white);
+    color: var(--primary-base-green);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* ================ Hourly Forecast ================ */
+  .hourly-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    background: var(--primary-extra-light-green);
+    margin-bottom: 30px;
+  }
+  .forecast-item {
+    flex: 1 0 12%;
+    min-width: 70px;
+    text-align: center;
+  }
+  .forecast-item .time {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+  }
+  .forecast-item .weather-icon {
+    font-size: 2.2em;
+    color: var(--primary-medium-green);
+  }
+  .forecast-item .temp {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--primary-dark-green);
+  }
+  
+  /* ================ Precipitation ================ */
+  .precipitation-forecast {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+    text-align: center;
+  }
+  .precip-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .precip-row.icons i {
+    font-size: 2em;
+    color: var(--primary-medium-green);
+  }
+  .precip-row.percentages span,
+  .precip-row.times span {
+    font-size: 0.85em;
+    flex: 1;
+  }
+  
+  /* ================ Scrollable Day Cards ================ */
+  .day-cards {
+    display: flex;
+    gap: 1rem;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-base-green) transparent;
+  }
+  .day-cards::-webkit-scrollbar {
+    height: 6px;
+  }
+  .day-cards::-webkit-scrollbar-thumb {
+    background-color: var(--primary-base-green);
+    border-radius: 10px;
+  }
+  .day-card {
+    background: var(--primary-extra-light-green);
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .day-card:hover {
+    background: var(--primary-light-green);
+    transform: translateY(-2px);
+  }
+  .day-card.active {
+    background: var(--primary-light-green);
+    border: 2px solid var(--primary-base-green);
+  }
+  .day-card p {
+    margin: 6px 0;
+    font-size: 0.9em;
+  }
+  .day-card img {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+  }
+  
+  /* ================== UPDATED Review Page Responsive ================== */
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 20px;
+    padding: 10px 20px;
+  }
+
+  header .main-nav ul {
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+
+  header .main-nav a {
+    font-size: 0.95em;
+  }
+
+  .header-icons {
+    gap: 15px;
+  }
+
+  .tab-navigation {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .tab-navigation .tab {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .left-sidebar,
+  .main-reviews-content,
+  .review-submission-section {
+    width: 100%;
+  }
+
+  .reviews-summary-card,
+  .main-reviews-content,
+  .review-submission-section {
+    padding: 15px;
+  }
+
+  .reviews-summary-card h2,
+  .review-submission-section h3 {
+    font-size: 1.4em;
+    text-align: center;
+  }
+
+  .overall-rating {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .overall-rating .rating-value {
+    font-size: 1.8em;
+  }
+
+  .overall-rating .stars {
+    font-size: 1em;
+  }
+
+  .review-button,
+  .submit-review-btn {
+    padding: 10px 15px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .individual-review-card {
+    padding: 15px 10px;
+  }
+
+  .reviewer-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .reviewer-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .reviewer-name {
+    font-size: 1em;
+  }
+
+  .review-tags {
+    gap: 5px;
+  }
+
+  .review-tag {
+    font-size: 0.8em;
+    padding: 4px 10px;
+  }
+
+  .review-photos-grid {
+    gap: 8px;
+  }
+
+  .review-photos-grid img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .review-form input[type="text"],
+  .review-form textarea {
+    padding: 8px;
+    font-size: 0.95em;
+  }
+
+  .stars-input {
+    font-size: 1.4em;
+  }
+
+  .review-actions-dropdown {
+    top: 5px;
+    right: 5px;
+  }
+
+  table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+
+  .main-weather-info {
+    padding: 20px;
+  }
+
+  .weather-header h2 {
+    font-size: 1.5em;
+  }
+
+  .weather-header .location {
+    font-size: 0.9em;
+  }
+
+  .day-tab {
+    font-size: 0.9em;
+    padding: 6px 14px;
+  }
+
+  .forecast-item {
+    flex: 1 0 25%;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 15px;
+  }
+
+  header .main-nav {
+    display: flex !important;
+    flex-wrap: nowrap;
+    gap: 15px;
+    overflow-x: auto;
+  }
+
+  .main-reviews-content .section-title,
+  .review-submission-section h3 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  .reviewer-name {
+    font-size: 0.95em;
+  }
+
+  .review-text {
+    font-size: 0.9em;
+  }
+
+  .review-photos-grid img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .tab-navigation .tab {
+    flex: 1 1 100%;
+    font-size: 0.95em;
+  }
+
+  .review-form input[type="text"],
+  .review-form textarea {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .submit-review-btn {
+    padding: 10px 15px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .review-actions-dropdown {
+    top: 5px;
+    right: 5px;
+  }
+
+  .individual-review-card {
+    padding-right: 30px;
+  }
+
+  table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+
+  .main-weather-info {
+    padding: 15px;
+  }
+
+  .weather-header h2 {
+    font-size: 1.3em;
+  }
+
+  .weather-header .location {
+    font-size: 0.85em;
+  }
+
+  .day-tab {
+    font-size: 0.85em;
+    padding: 5px 12px;
+  }
+
+  .forecast-item {
+    flex: 1 0 33%;
+    min-width: 50px;
+  }
+}
+/* ================== Responsive Design ================== */

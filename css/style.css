@@ -1,0 +1,936 @@
+/* Merged and Updated Styles */
+
+/* Color Palette Variables */
+:root {
+    --primary-dark-green: #0D3B13; /* Darkest Green */
+    --primary-medium-green: #1B5E20; /* For hover states */
+    --primary-base-green: #2E7D32; /* Main Green for buttons, accents */
+    --primary-light-green: #A5D6A7; /* Light Green */
+    --primary-extra-light-green: #E8F5E9; /* Very Light Green/Off-white, backgrounds */
+
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-medium-brown: #36230D;
+    --secondary-base-brown: #4A3118; /* Main Brown for text, darker elements */
+    --secondary-light-brown: #C8B6A6; /* Light Brown */
+    --secondary-extra-light-brown: #F5EDE6; /* From image_0eb68a.png, used for hover */
+
+    --light-grey-background: #f0f0f0; /* General light grey for backgrounds */
+    --text-color: #333;
+    --light-text-color: #666;
+    --white-color: #fff;
+    --border-color: #ddd;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-button, .logout-button {
+    background-color: var(--primary-base-green);
+    color: var(--white-color);
+    padding: 8px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .logout-button:hover {
+    background-color: var(--primary-medium-green);
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+    overflow: hidden; /* Clear floats */
+}
+
+/* Navbar */
+.navbar {
+    background: transparent; /* Changed to transparent */
+    color: var(--white-color);
+    padding: 1rem 0;
+    position: absolute; /* Changed to absolute to float over the hero */
+    top: 0; 
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.navbar .logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;    
+}
+.navbar .logo{
+    flex: 0 0 auto;
+}
+
+.navbar .nav-links a {
+    color: var(--white-color);
+    text-decoration: none;
+    align-items: center;
+    margin-left: auto;
+    gap: 20px; 
+    padding: 5px 10px;
+    font-size: 23px; 
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.navbar .login-button {
+    background: var(--primary-base-green); /* Green */
+    color: var(--white-color);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .login-button:hover {
+    background: var(--primary-medium-green);
+}
+
+.hero-section {
+    position: relative; /* Establish positioning context for children */
+    overflow: hidden; /* Hide overflowing parts of the background carousel */
+    height: 600px; /* Adjust as needed */
+    /* Removed display: flex, align-items, justify-content from here */
+    color: var(--white-color);
+    text-align: center;
+    padding: 50px 0; /* Add some vertical padding to keep content off edges */
+}
+
+/* Overlay for readability (keep this if you want a darkening effect on the background) */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: 1; /* Place between background and content */
+}
+
+/* Hero Background Carousel (new/adjusted, crucial for scrolling effect) */
+.hero-background-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Double width to accommodate duplicated images for seamless loop */
+    height: 100%;
+    display: flex; /* Arrange images in a row */
+    animation: scrollBackground 20s linear infinite; /* Adjust duration as needed */
+    z-index: 0; /* Place behind hero content and overlay */
+}
+
+.hero-background-carousel img {
+    width: 25%; /* Each image takes a quarter of the 200% width, so 50% of viewport */
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+/* Keyframes for scrolling animation */
+@keyframes scrollBackground {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Move half of the 200% width (i.e., full original width) */
+    }
+}
+
+/* Ensure the .container within hero-section is correctly positioned and styled */
+.hero-section .container {
+    position: relative; /* Keep container content on top */
+    z-index: 2; /* Ensure it's above the background carousel and overlay */
+    max-width: 960px; /* Or whatever your standard container max-width is */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    /*background: rgba(0, 0, 0, 0.4);  Slightly transparent overlay for readability */
+    /* border-radius: 10px; */
+    display: flex; /* Use flexbox for content alignment within the container */
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within the container */
+    justify-content: center; /* Center items vertically within the container */
+    height: 100%; /* Allow container to take full height of hero-section (minus padding) */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+
+/* Adjustments for the search and filter container within the hero */
+.search-and-filter-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    gap: 15px; /* Space between search bar and filters */
+    margin-top: 20px; /* Adjust as needed */
+    width: 100%; /* Ensure it uses available width within its parent */
+    max-width: 600px; /* Constrain search bar width */
+    margin-bottom: 20px;
+}
+
+.hero-section .search-bar {
+    flex-grow: 1; /* Allow search bar to take available space */
+    position: relative;
+}
+
+.hero-section .search-bar input {
+    width: 100%;
+    padding: 12px 40px 12px 15px; /* Adjusted padding for icon */
+    border: none;
+    border-radius: 25px;
+    font-size: 1em; /* Changed to relative unit */
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.hero-section .search-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text-color);
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.hero-section .search-bar .search-icon:hover {
+    color: var(--primary-base-green);
+}
+
+
+.hero-section .filters {
+    /* These styles are now largely controlled by .search-and-filter-container */
+    gap: 10px;
+}
+
+.hero-section .filter-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white-color);
+    border: 1px solid var(--white-color);
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+}
+
+.hero-section .filter-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: var(--primary-light-green);
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero-cta {
+    font-size: 1.5em;
+    margin-top: 30px; /* Added margin-top to create gap above it */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+/* How It Works */
+.how-it-works {
+    background-color: var(--primary-extra-light-green); /* Very light green background */
+    padding: 60px 0;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--primary-dark-green);
+}
+
+.how-it-works p {
+    font-size: 1.1em;
+    margin-bottom: 50px;
+    color: var(--text-color);
+}
+
+.how-it-works .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    position: relative;
+    padding-bottom: 40px; /* Space for line below steps */
+}
+
+.how-it-works .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--primary-light-green); /* Light green line */
+    z-index: 0;
+}
+
+.discover-trails-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+
+.how-it-works .step {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1; /* Ensure content is above the line */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.how-it-works .step img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.how-it-works .step h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--primary-base-green);
+}
+
+.how-it-works .step p {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Hiking Vacations - Carousel Specific Styles (Renamed to "Start Your Journey" concept) */
+.hiking-vacations {
+    padding: 60px 0;
+    text-align: center;
+    height: 100%;
+    background-color: var(--light-grey-background);
+}
+
+.hiking-vacations h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--primary-dark-green);
+}
+
+.hiking-vacations p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.trip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.trip-list .card {
+    flex: 0 0 240px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: left;
+    margin-bottom:24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.trip-list .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.trip-list .card-content {
+    padding: 15px;
+}
+.trip-list .card-header {
+    /* background-color: #edececcb;
+    background: #a6a6a666; */
+
+    background-color: #FAFAFA;
+    opacity: 1.7;
+    padding: 15px;
+}
+
+.trip-list .card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 6px 15px #0D3B13;
+}
+
+.trip-list .card-content h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.trip-list .card-content p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.trip-list .card-content button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.trip-list .card-content button:hover {
+    background-color: #388E3C;
+}
+.carousel-dots {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 30px; /* Space below dots */
+}
+
+.discover-trails-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+/* Hikers Reviews */
+.hikers-reviews {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--white-color);
+}
+
+.hikers-reviews h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--primary-dark-green);
+}
+
+.hikers-reviews p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.hikers-reviews .review-headers {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--primary-base-green);
+}
+
+.hikers-reviews .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.hikers-reviews .review-card {
+    background-color: var(--primary-extra-light-green); /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.hikers-reviews .review-card h4 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: var(--primary-dark-green);
+}
+
+.hikers-reviews .review-card p {
+    font-size: 0.95em;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.hikers-reviews .dots {
+    margin-top: 30px;
+}
+
+.hikers-reviews .dots .dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hikers-reviews .dots .dot.active,
+.hikers-reviews .dots .dot:hover {
+    background-color: #717171;
+}
+
+/* Footer */
+footer {
+    background-color: #0D3B13;
+    color: white;
+    padding: 40px 20px 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-logo {
+    /* width: 150px; */
+    width: 4.375rem;
+}
+
+.footer-vision {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.social-icons a {
+    margin-right: 21px;
+    color: white;
+    font-size: 25px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    margin-left: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Modal Styles (Filters and Menu) */
+.modal-overlay,
+.menu-modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.filters-container {
+    background-color: var(--white-color);
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.filters-header h2 {
+    font-size: 1.8em;
+    color: var(--primary-dark-green);
+}
+
+.close-icon {
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    color: #333;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    font-size: 1.3em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.amenities-options,
+.trip-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-tag {
+    background-color: var(--primary-extra-light-green); /* Light green background */
+    color: var(--primary-dark-green); /* Dark green text */
+    border: 1px solid var(--primary-light-green); /* Light green border */
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.filter-tag:hover,
+.filter-tag.selected {
+    background-color: var(--primary-base-green); /* Base green when selected/hovered */
+    color: var(--white-color);
+    border-color: var(--primary-base-green);
+}
+
+/* Difficulty Slider */
+.difficulty-slider-container {
+    margin-top: 20px;
+    padding: 0 10px; /* Padding to align with labels */
+}
+
+.difficulty-slider {
+    width: 100%;
+    -webkit-appearance: none; /* Override default appearance */
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.difficulty-slider:hover {
+    opacity: 1;
+}
+
+.difficulty-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-base-green);
+    cursor: pointer;
+}
+
+.difficulty-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-base-green);
+    cursor: pointer;
+}
+
+.difficulty-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px 25px;
+    background-color: var(--primary-base-green);
+    color: var(--white-color);
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--primary-medium-green);
+}
+
+/* Menu Modal (for smaller screens) */
+.menu-modal-overlay {
+    align-items: flex-start; /* Align to top */
+}
+
+.menu-content {
+    background-color: var(--white-color);
+    padding: 30px 20px;
+    width: 280px; /* Fixed width for the menu */
+    height: 100%; /* Full height */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* For positioning close button */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    transform: translateX(-100%); /* Start off-screen */
+    transition: transform 0.3s ease-out;
+}
+
+.menu-modal-overlay.open .menu-content {
+    transform: translateX(0); /* Slide in */
+}
+
+.close-menu-icon {
+    font-size: 1.8em;
+    color: #888;
+    cursor: pointer;
+    align-self: flex-end; /* Align to the right within flex container */
+    margin-bottom: 20px;
+}
+
+.menu-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between links */
+}
+
+.menu-nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+}
+
+.menu-nav-links a:hover {
+    color: var(--primary-base-green);
+}
+
+/* Responsive Adjustments (Home page specific) */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: row; /* Changed to row for same line */
+        justify-content: space-between; /* Distribute items */
+        align-items: center; /* Center items vertically */
+        padding: 10px 15px;
+    }
+    .navbar .logo {
+        margin-bottom: 0; /* Remove margin below logo */
+    }
+    .navbar .nav-links {
+        display: flex;
+        flex-direction: row; /* Ensure nav links stay in a row */
+        gap: 10px;
+        width: auto; /* Allow nav links to take natural width */
+        align-items: center;
+    }
+    .navbar .nav-links a,
+    .navbar .login-button {
+        margin: 0;
+        font-size: 18px;
+        padding: 8px 12px; /* Adjusted padding for better fit */
+    }
+    .navbar .login-button {
+        margin-top: 0; /* Remove margin above login button */
+    }
+
+    .hero-section {
+        padding: 60px 0;
+        height: 500px;
+    }
+    .hero-section h1 {
+        font-size: 2em;
+        margin-top: 60px;
+    }
+    .hero-section h2 {
+        font-size: 1.2em;
+    }
+    .search-and-filter-container {
+        flex-direction: column;
+        width: 90%;
+        max-width: 400px;
+        gap: 10px;
+    }
+    .hero-section .search-bar {
+        width: 100%;
+    }
+    .hero-section .search-bar input {
+        width: 100%;
+    }
+    .hero-section .filters {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    /* Adjust cards in carousel for smaller screens */
+    .trip-list .card {
+        flex: 0 0 100%;
+    }
+    .hikers-reviews .review-headers {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hikers-reviews .review-headers span {
+        margin-bottom: 10px;
+    }
+    .how-it-works .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .how-it-works .steps-grid::before {
+        display: none;
+    }
+    .footer-bottom {
+        flex-direction: column;
+    }
+    .footer-links {
+        margin-top: 15px;
+    }
+    .footer-links a {
+        margin: 5px 10px;
+    }
+}
+
+/* Tablet and smaller screens (adjustments for both) */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+    .content-wrapper, .main-trail-updates-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .left-sidebar {
+        flex: none;
+        width: 100%;
+    }
+    /* Adjust for image grid (Overview) */
+    .image-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .large-image-placeholder {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+    .small-image-placeholder, .map-placeholder {
+        height: 200px; /* Give some height on small screens */
+    }
+    .hourly-forecast {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+    }
+    .hourly-forecast .forecast-item {
+        flex: 1 0 25%; /* 4 items per row */
+        margin-bottom: 10px; /* Space between rows */
+    }
+    .live-conditions-grid {
+        grid-template-columns: 1fr; /* Stack conditions vertically */
+    }
+    .reviews-grid {
+        grid-template-columns: 1fr; /* Stack reviews vertically */
+    }
+    .update-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .update-map-image-placeholder {
+        width: 100%;
+        height: 200px;
+    }
+    .issue-location-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.hazard-icon-link {
+    text-decoration: none; /* Remove underline */
+    color: var(--white-color); /* Keep the icon color white */
+    font-size: inherit;
+    display: inline-block;
+    padding: 0 5px;
+}
+.hazard-icon-link:hover {
+    color: var(--primary-light-green);
+}

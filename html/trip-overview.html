@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trailquest - Trip Overview</title>
+  <link rel="stylesheet" href="../css/trips-overview.css"/>
+  <script type="module" src="../js/trip-overview.js"></script>
+  <script type="module" src="../js/trip-register.js"></script>
+  <script type="module" src="../js/main-tab.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../Image/logo.png" alt="logo"/>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../html/index.html">Home</a></li>
+        <li><a href="../html/why-choose-us.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <a href="../html/profile.html" id="profile-color"><i class="fas fa-user-circle"></i></a>
+      <a href="../html/chat.html" id="profile-color"><i class="fas fa-comment-dots"></i></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="tab-navigation">
+      <a class="tab" id="tabOverview">Overview</a>
+      <a class="tab" id="tabConditions">Conditions</a>
+      <a class="tab" id="tabReviews">Reviews</a>
+      <a class="tab" id="tabUpdates">Trail updates</a>
+    </div>    
+
+    <div class="content-wrapper">
+      <aside class="left-sidebar">
+        <div class="trail-card">
+          <div class="card-image-placeholder">
+            <img id="mainTrailImage" src="https://picsum.photos/id/1043/400/250" alt="Trail image" />
+            <span class="photo-count"><i class="fas fa-camera"></i> <span id="photoCount">0</span></span>
+          </div>
+          <h2 id="sidebarTrailName">Trail Name</h2>
+          <div class="rating">
+            <span class="stars-small" id="starRating"></span>
+            <span id="ratingText"></span>
+          </div>
+          <button id="hitTrailBtn" class="hit-the-trail-btn">
+            <i class="fas fa-play-circle"></i> Hit the trail
+          </button>
+
+          <a href="chat.html" id="chatLink" class="chat-btn">
+            <i class="fas fa-comments"></i> Chat with Organizer
+          </a>
+        </div>
+      </aside>
+
+      <section class="main-trail-info">
+        <h1 id="mainTrailName">Trail Name</h1>
+        <p class="organizer-name" id="organizerName">Organized by ...</p>
+
+        <div class="image-grid" id="imageGrid"></div>
+
+        <div class="key-stats">
+          <div class="stat-item">
+            <span class="value" id="trailLength">--</span>
+            <span class="label">Length</span>
+          </div>
+          <div class="stat-item">
+            <span class="value" id="trailDuration">--</span>
+            <span class="label">Est. Completion</span>
+          </div>
+          <div class="stat-item">
+            <span class="value" id="trailDifficulty">--</span>
+            <span class="label">Difficulty</span>
+          </div>
+        </div>
+
+        <p class="trail-description" id="trailDescription">Loading trail description...</p>
+
+        <div class="essential-visitor-info">
+          <h2>Essential Visitor Info</h2>
+          <div class="info-category">
+            <h3>Trail Info</h3>
+            <ul class="info-points" id="infoTrail"></ul>
+          </div>
+          <div class="info-category">
+            <h3>Features</h3>
+            <ul class="info-points" id="infoFeatures"></ul>
+          </div>
+          <div class="info-category">
+            <h3>Activities</h3>
+            <ul class="info-points" id="infoActivities"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Registration Modal -->
+  <div id="registerModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="closeModal" class="close-button">&times;</span>
+      <h2>Register for This Trail</h2>
+
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" required>
+
+      <label for="emergencyContact">Emergency Contact:</label>
+      <input type="text" id="emergencyContact" required>
+
+      <label for="groupSize">Group Size:</label>
+      <input type="number" id="groupSize" required>
+
+      <label for="location">Your Location:</label>
+      <input type="text" id="location" required>
+
+      <button id="submitRegistration">Submit</button>
+    </div>
+  </div>
+</body>
+</html>

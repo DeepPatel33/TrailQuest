@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trail Listings - Trailquest</title>
+  <link rel="stylesheet" href="../css/after-class.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="../Image/logo.png" alt="logo" />
+      </div>
+      <nav class="main-nav">
+        <a href="../html/index.html" class="nav-link">Home</a>
+        <a href="../html/why-choose-us.html" class="nav-link">Why Choose Us</a>
+      </nav>
+      <div class="header-icons">
+        <a href="../html/profile.html" id="profile-color"><i class="fas fa-user-circle"></i></a>
+        <a href="../html/chat.html" id="profile-color"><i class="fas fa-comment-dots"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="trails-page-content">
+    <section class="trails-hero-section">
+      <div class="container">
+        <div class="search-container">
+          <input type="text" placeholder="Search for trails..." id="searchPageInput">
+          <i class="fas fa-search search-icon" id="searchPageIcon"></i>
+        </div>
+        <div class="applied-filters-container" id="appliedFiltersContainer"></div>
+      </div>
+    </section>
+
+    <div id="trip-list" class="trip-list">
+      </div>
+  </main>
+
+  <div id="filterModal" class="modal-overlay">
+    <div class="filters-container">
+      <div class="filters-header">
+        <h2>Filters</h2>
+        <i class="fas fa-times close-icon" id="closeFiltersBtn"></i>
+      </div>
+
+      <div class="filter-section">
+        <h3>Amenities</h3>
+        <div class="amenities-options">
+          <button class="filter-tag">Water sources</button>
+          <button class="filter-tag">Toilet</button>
+          <button class="filter-tag">Parking</button>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Difficulty</h3>
+        <div class="difficulty-slider-container">
+          <input type="range" min="0" max="2" value="1" class="difficulty-slider">
+          <div class="difficulty-labels">
+            <span>Easy</span>
+            <span>Intermediate</span>
+            <span>Hard</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Trips</h3>
+        <div class="trip-options">
+          <button class="filter-tag">Group Trips</button>
+          <button class="filter-tag">Solo Trips</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import {
+      getFirestore,
+      collectionGroup,
+      getDocs
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUV-8E2w3Td_TyYo52LAvhb2WA9CnVaLY",
+      authDomain: "trial-quest-45442.firebaseapp.com",
+      projectId: "trial-quest-45442",
+      storageBucket: "trail-quest-45442.appspot.com",
+      messagingSenderId: "780796401639",
+      appId: "1:780796401639:web:b3bfb178ff7450ac3c0f42",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    function getSearchQuery() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("query")?.toLowerCase() || "";
+    }
+
+    async function loadSearchedTrips() {
+      const query = getSearchQuery();
+      const container = document.getElementById("trip-list");
+      const appliedFiltersContainer = document.getElementById("appliedFiltersContainer");
+      appliedFiltersContainer.innerHTML = ''; // Clear previous filters display
+
+      // Retrieve filters from sessionStorage
+      let appliedFilters = {};
+      try {
+        const storedFilters = sessionStorage.getItem('appliedFilters');
+        if (storedFilters) {
+          appliedFilters = JSON.parse(storedFilters);
+          // Clear filters from session storage after reading them
+          sessionStorage.removeItem('appliedFilters');
+        }
+      } catch (e) {
+        console.error("Error parsing stored filters:", e);
+        // If there's an error, just proceed without filters
+      }
+
+      // Display applied filters
+      let filterDisplayHtml = '';
+      if (query) {
+        filterDisplayHtml += `<span class="applied-filter-tag">Search: ${query}</span>`;
+      }
+      if (appliedFilters.trailTypes && appliedFilters.trailTypes.length > 0) {
+        filterDisplayHtml += appliedFilters.trailTypes.map(type => `<span class="applied-filter-tag">Trail Type: ${type}</span>`).join('');
+      }
+      if (appliedFilters.tripTypes && appliedFilters.tripTypes.length > 0) {
+        filterDisplayHtml += appliedFilters.tripTypes.map(type => `<span class="applied-filter-tag">Trip Type: ${type}</span>`).join('');
+      }
+      if (appliedFilters.difficulty) {
+        filterDisplayHtml += `<span class="applied-filter-tag">Difficulty: ${appliedFilters.difficulty}</span>`;
+      }
+      appliedFiltersContainer.innerHTML = filterDisplayHtml;
+
+      const snapshot = await getDocs(collectionGroup(db, "tripList"));
+      let found = false;
+      let tripCardsHTML = "";
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const tripName = data.tripName?.toLowerCase() || "";
+        const image = data.photoURLs?.[0] || "https://picsum.photos/300/200";
+
+        let matchesSearch = true;
+        if (query && !tripName.includes(query)) {
+          matchesSearch = false;
+        }
+
+        let matchesFilters = true;
+        // Check Trail Type filter
+        if (appliedFilters.trailTypes && appliedFilters.trailTypes.length > 0) {
+            const dataTrailType = data.trailType || ""; // Assuming trailType is a string in Firestore
+            if (!appliedFilters.trailTypes.includes(dataTrailType)) {
+                matchesFilters = false;
+            }
+        }
+
+        // Check Trip Type filter
+        if (appliedFilters.tripTypes && appliedFilters.tripTypes.length > 0) {
+            const dataTripType = data.tripType || ""; // Assuming tripType is a string in Firestore
+            if (!appliedFilters.tripTypes.includes(dataTripType)) {
+                matchesFilters = false;
+            }
+        }
+
+        // Check Difficulty filter
+        if (appliedFilters.difficulty) {
+            const dataDifficulty = data.difficulty || ""; // Assuming difficulty is a string in Firestore
+            if (appliedFilters.difficulty !== dataDifficulty) {
+                matchesFilters = false;
+            }
+        }
+
+
+        if (matchesSearch && matchesFilters) {
+          found = true;
+          const tripId = doc.id;
+          const organizerId = doc.ref.parent.parent.id;
+
+          // Updated trip card structure to match the provided image design
+          tripCardsHTML += `
+            <div class="trip-card">
+              <img src="${image}" class="trip-image" alt="${data.tripName}">
+              <div class="trip-badges">
+                
+                ${data.tripType ? `<span class="trip-type-badge">${data.tripType}</span>` : ''}
+              </div>
+              <div class="trip-content">
+                <h3>${data.tripName}</h3>
+                ${data.cityPlace ? `<p><strong>Location:</strong> ${data.cityPlace}</p>`: ""}
+          ${data.length ? `<p><strong>Length:</strong> ${data.length}</p>` : ""}
+          ${data.tripType ? `<p><strong>Trip Type:</strong> ${data.tripType}</p>`: ""}
+          ${data.difficulty ? `<p><strong>Difficulty:</strong> ${data.difficulty}</p>`: ""}
+          <button onclick="joinTrip('${tripId}', '${organizerId}')">Explore</button>
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      window.joinTrip = function (tripId, organizerId) {
+  window.location.href = `trip-overview.html?tripId=${tripId}&organizerId=${organizerId}`;
+};
+
+      if (found) {
+        container.innerHTML = tripCardsHTML;
+      } else {
+        container.innerHTML = `<p style="text-align:center; font-size:1.2rem; padding:2rem;">No results found for your search and applied filters.</p>`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadSearchedTrips);
+
+    // Re-added search functionality for after-search.html
+    const searchPageInput = document.getElementById("searchPageInput");
+    const searchPageIcon = document.getElementById("searchPageIcon");
+
+    function performSearchPage() {
+      const query = searchPageInput.value.trim();
+      const params = new URLSearchParams(window.location.search);
+      // Preserve existing query params if any, but prioritize the new search query
+      params.set('query', encodeURIComponent(query));
+      window.location.href = `after-search.html?${params.toString()}`;
+    }
+
+    if (searchPageInput) {
+      searchPageInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          performSearchPage();
+        }
+      });
+    }
+
+    if (searchPageIcon) {
+      searchPageIcon.addEventListener("click", performSearchPage);
+    }
+  </script>
+
+</body>
+</html>

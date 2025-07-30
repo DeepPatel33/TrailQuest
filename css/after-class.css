@@ -1,0 +1,475 @@
+/* Color Palette Variables */
+:root {
+    --primary-dark-green: #0D3B13; /* Darkest Green */
+    --primary-base-green: #2E7D32; /* Main Green */
+    --primary-light-green: #A5D6A7; /* Light Green */
+    --primary-extra-light-green: #E8F5E9; /* Very Light Green/Off-white */
+
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-base-brown: #4A3118; /* Main Brown */
+    --secondary-light-brown: #C8B6A6; /* Light Brown */
+    --secondary-extra-light-brown: #F5EDE6; /* For hover states etc. */
+
+    --light-grey-background: #f0f0f0; /* General light grey for backgrounds */
+    --text-color: #333;
+    --light-text-color: #666;
+    --white-color: #fff;
+    --border-color: #ddd;
+    --star-color: #FFC107; /* Gold for stars */
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-extra-light-green); /* Lightest green for body background */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+    /* overflow: hidden; */ /* Keep for general sections, but be mindful with elements like modals */
+}
+
+/* --- Site Header (Navbar) --- */
+.site-header {
+    background: var(--primary-dark-green); /* Dark green navbar */
+    color: var(--white-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.site-header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px; /* Match container width */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-header .logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+    /* border-radius: 50%; For circular logo */
+}
+
+.site-header .main-nav .nav-link {
+    color: var(--white-color);
+    text-decoration: none;
+    margin-left: 30px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.site-header .main-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.site-header .header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.site-header .header-icons i {
+    font-size: 1.3em;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.site-header .header-icons i:hover {
+    color: var(--primary-light-green);
+}
+
+.site-header .mobile-menu-icon {
+    display: none; /* Hide by default on desktop */
+}
+
+/* --- Trails Hero Section (Search & Filter Bar) --- */
+.trails-hero-section {
+    background-color: var(--white-color); /* White background for this section */
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.trails-hero-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between search and filter bar */
+    align-items: center;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Limit search bar width */
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 40px 12px 15px; /* Adjust padding for icon */
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: var(--primary-base-green);
+}
+
+.search-container .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text-color);
+    cursor: pointer;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap; /* Allow filters to wrap */
+    gap: 10px; /* Space between filter buttons */
+    justify-content: center;
+    width: 100%; /* Ensure it takes full width */
+}
+
+.filter-button,
+.filter-pill {
+    padding: 10px 18px;
+    border-radius: 25px; /* Rounded pill shape */
+    border: 1px solid var(--border-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping within pills */
+}
+
+.primary-filter-button {
+    background-color: var(--primary-base-green); /* Green background for primary filter */
+    color: var(--white-color);
+    border-color: var(--primary-base-green);
+    font-weight: bold;
+}
+
+.primary-filter-button:hover {
+    background-color: var(--primary-dark-green);
+    border-color: var(--primary-dark-green);
+}
+
+.filter-pill {
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+.filter-pill:hover {
+    background-color: var(--primary-extra-light-green); /* Light green hover */
+    border-color: var(--primary-light-green);
+}
+
+/* --- Trail List Section (Grid of Cards) --- */
+.trail-list-section {
+    padding: 40px 0;
+    background-color: var(--primary-extra-light-green); /* Lightest green background for this section */
+}
+
+.trip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+#trip-list p {
+  font-weight: bold;
+  color: #777;
+}
+
+
+#no-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+}
+
+.no-result-text {
+  font-size: 2.5rem;
+  color: #444;
+  font-weight: bold;
+}
+
+.trip-card {
+  flex: 0 0 240px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trip-card:hover {
+  transform: translateY(-5px);
+}
+
+.trip-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.trip-content {
+  padding: 1rem;
+}
+
+.trip-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.trip-location {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+trip-date {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.trip-description {
+  font-size: 0.9rem;
+}
+
+.trip-list .card-content button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.trip-list .card-content button:hover {
+  background-color: #388E3C;
+}
+#profile-color {
+  color: white;
+}
+/* --- Filter Modal Specific CSS (Reused from previous step) --- */
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top of everything else */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.filters-container {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* More prominent shadow for a modal/popup */
+    padding: 25px;
+    width: 350px; /* Fixed width as seen in the image */
+    position: relative; /* For close icon positioning */
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.filters-header h2 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.filters-header .close-icon {
+    font-size: 1.2em;
+    color: var(--light-text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.filters-header .close-icon:hover {
+    color: var(--text-color);
+}
+
+/* Individual Filter Sections */
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h3 {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* Filter Tags (Buttons inside modal) */
+.amenities-options,
+.trip-options {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
+    gap: 10px; /* Space between buttons */
+}
+
+.filter-tag { /* Note: This is separate from .filter-pill in the main page */
+    background-color: var(--white-color);
+    border: 1px solid var(--secondary-light-brown); /* Brown border */
+    color: var(--secondary-base-brown); /* Brown text */
+    padding: 8px 15px;
+    border-radius: 20px; /* Rounded corners */
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-tag:hover {
+    background-color: var(--secondary-extra-light-brown); /* Slightly lighter brown on hover */
+    border-color: var(--secondary-base-brown);
+}
+
+/* Difficulty Slider */
+.difficulty-slider-container {
+    position: relative;
+    padding: 0 10px; /* Padding for slider track */
+}
+
+.difficulty-slider {
+    width: 100%;
+    -webkit-appearance: none; /* Remove default slider style for Chrome/Safari */
+    appearance: none;
+    height: 6px; /* Height of the slider track */
+    background: var(--light-grey-background); /* Track color */
+    outline: none;
+    border-radius: 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin-bottom: 10px; /* Space between slider and labels */
+}
+
+.difficulty-slider:hover {
+    opacity: 1;
+}
+
+/* Slider Thumb (the draggable part) */
+.difficulty-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Size of the thumb */
+    height: 20px;
+    border-radius: 50%; /* Round thumb */
+    background: var(--secondary-base-brown); /* Brown thumb color */
+    cursor: pointer;
+    margin-top: -7px; /* Adjust to center thumb on track */
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1); /* Slight shadow for visibility */
+}
+
+.difficulty-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary-base-brown);
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+}
+
+.difficulty-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: var(--light-text-color);
+    padding: 0 5px; /* Align with slider track visually */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .site-header .main-nav {
+        display: none; /* Hide main nav by default on smaller screens */
+    }
+
+    .site-header .mobile-menu-icon {
+        display: block; /* Show mobile menu icon */
+    }
+
+    .site-header .header-container {
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center; /* Center items when wrapped */
+        gap: 15px;
+    }
+
+    .trails-hero-section .container {
+        flex-direction: column;
+        align-items: stretch; /* Stretch items to fill width */
+    }
+
+    .search-container {
+        max-width: 100%; /* Take full width on small screens */
+    }
+
+    .filter-bar {
+        justify-content: flex-start; /* Align filters to the left */
+        gap: 8px; /* Slightly less gap */
+    }
+
+    .filter-button, .filter-pill {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    .trail-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .filters-container {
+        width: 90%; /* Make modal wider on small screens */
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header .logo {
+        font-size: 1.5em;
+    }
+
+    .site-header .header-icons i {
+        font-size: 1em;
+        margin-left: 15px;
+    }
+    
+    .filter-bar {
+        justify-content: center; /* Re-center filters if they wrap to multiple lines */
+    }
+}

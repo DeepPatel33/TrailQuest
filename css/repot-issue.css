@@ -1,0 +1,459 @@
+/* Color Palette Variables (reusing for consistency) */
+:root {
+    /* Primary Colors */
+    --primary-dark-green: #0D3B13;
+    --primary-medium-green: #1B5E20;
+    --primary-base-green: #2E7D32; /* Main green for buttons, accents */
+    --primary-light-green: #A5D6A7;
+    --primary-extra-light-green: #E8F5E9; /* Backgrounds, light elements */
+
+    /* Secondary Colors */
+    --secondary-dark-brown: #2E1F0A;
+    --secondary-medium-brown: #36230D;
+    --secondary-base-brown: #4A3118; /* Text, darker elements */
+    --secondary-light-brown: #C8B6A6;
+    --secondary-extra-light-brown: #F5EDE6; /* Light backgrounds, borders */
+
+    /* General Text Color */
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --white: #fff;
+    --star-color: #FFC107; /* Gold for stars */
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-extra-light-green); /* Light background for the page */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Header (reused from other pages) */
+.site-header {
+    background-color: var(--primary-dark-green);
+    color: var(--white);
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.site-header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-header .logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+}
+
+.site-header .main-nav {
+    display: flex; /* Ensure nav links are visible */
+}
+
+.site-header .main-nav .nav-link {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.site-header .main-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.site-header .header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5em;
+}
+
+.site-header .header-icons i {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.site-header .header-icons i:hover {
+    color: var(--primary-light-green);
+}
+
+.site-header .mobile-menu-icon {
+    display: none; /* Hidden by default on desktop, shown on mobile */
+}
+
+/* Tab Navigation (reused from other pages) */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab-navigation .tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.05em;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    white-space: nowrap;
+}
+
+.tab-navigation .tab.active {
+    color: var(--primary-base-green);
+    border-bottom: 3px solid var(--primary-base-green);
+    font-weight: bold;
+}
+
+.tab-navigation .tab:hover:not(.active) {
+    color: var(--primary-medium-green);
+}
+
+/* Report Page Content */
+.report-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.report-issue-section {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    width: 100%;
+    max-width: 700px; /* Max width for the form */
+    margin-top: 30px; /* Space from tab navigation */
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.report-header h2 {
+    font-size: 2em;
+    color: var(--primary-dark-green);
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-section {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    background-color: var(--primary-extra-light-green); /* Light background for sections */
+}
+
+.form-section h3 {
+    font-size: 1.3em;
+    color: var(--secondary-base-brown);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color); /* Dashed separator */
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.input-group input[type="text"],
+.input-group select,
+.textarea-wrapper textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: Arial, sans-serif; /* Ensure consistent font */
+    color: var(--text-color);
+    background-color: var(--white);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input[type="text"]:focus,
+.input-group select:focus,
+.textarea-wrapper textarea:focus {
+    border-color: var(--primary-base-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2); /* Green focus ring */
+}
+
+/* Upload Section */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 2px dashed var(--primary-light-green);
+    border-radius: 8px;
+    padding: 25px;
+    background-color: var(--white);
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: var(--primary-dark-green);
+}
+
+.upload-button i {
+    font-size: 1.1em;
+}
+
+.uploaded-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px; /* Space from button */
+    width: 100%;
+}
+
+.preview-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.preview-item img,
+.preview-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.remove-preview {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.remove-preview:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Description Section */
+.textarea-wrapper {
+    position: relative;
+}
+
+.textarea-wrapper textarea {
+    min-height: 120px; /* Initial height for textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.word-count {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.85em;
+    color: var(--light-text-color);
+    background-color: var(--white); /* Ensure it's readable over text */
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Submit Report Button */
+.submit-report-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-base-green);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-report-button:hover {
+    background-color: var(--primary-dark-green);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 15px 20px;
+    }
+    .site-header .main-nav {
+        display: none; /* Hide main nav on smaller screens */
+    }
+    .site-header .mobile-menu-icon {
+        display: block; /* Show mobile menu icon */
+    }
+    .site-header .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .tab-navigation {
+        padding: 10px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .tab-navigation .tab {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .report-issue-section {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .report-header h2 {
+        font-size: 1.6em;
+    }
+
+    .form-section {
+        padding: 15px;
+    }
+
+    .form-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .input-group label {
+        font-size: 0.9em;
+    }
+
+    .input-group input[type="text"],
+    .input-group select,
+    .textarea-wrapper textarea {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .upload-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .preview-item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .word-count {
+        font-size: 0.8em;
+        bottom: 5px;
+        right: 8px;
+    }
+
+    .submit-report-button {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 10px 15px;
+    }
+    .site-header .header-container .logo img {
+        height: 40px;
+    }
+    .site-header .header-icons {
+        font-size: 1.2em;
+        gap: 10px;
+    }
+
+    .report-page-content {
+        padding: 15px;
+    }
+
+    .report-issue-section {
+        padding: 15px;
+    }
+
+    .report-header h2 {
+        font-size: 1.4em;
+    }
+
+    .form-section {
+        padding: 10px;
+    }
+
+    .form-section h3 {
+        font-size: 1em;
+    }
+}

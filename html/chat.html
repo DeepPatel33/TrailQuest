@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trail Quest Chat</title>
+  <link rel="stylesheet" href="../CSS/chat.css" />
+  <script src="../js/script.js"></script>
+  <!-- PWA Manifest & Theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#2E7D32">
+
+</head>
+<body>
+
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button class="back-button" id="backBtn">← Back</button>
+  </div>
+
+  <!-- Main Chat Layout -->
+  <div class="main-container">
+    
+    <!-- Chat List Panel -->
+    <div class="chat-list-panel active" id="chatListPanel">
+      <div class="chat-list-header">
+        <button class="mobile-home-btn" id="mobileHomeBtn">← Back</button>
+        <span>Chats</span>
+      </div>
+      <div class="chat-list">
+        <div id="chatList">
+          <!-- Chat items injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Window Panel -->
+    <div class="chat-window-panel" id="chatWindowPanel">
+      
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <button class="back-to-list" id="mobileBackBtn">←</button>
+        <span class="chat-username" id="chatUsername">Select a user</span>
+      </div>
+
+      <!-- Chat Body -->
+      <div class="chat-body" id="chatBody">
+        <!-- Messages will be injected here dynamically -->
+      </div>
+
+      <!-- Message Input -->
+      <div class="chat-input">
+        <textarea id="messageInput" rows="1" placeholder="Type a message..."></textarea>
+        <button id="sendBtn">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Logic -->
+  <script src="../JS/chat.js" type="module"></script>
+
+  <!-- Navigation Script -->
+  <script>
+    // Desktop back button
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.history.back();
+    });
+
+    // Mobile back-to-list button
+    document.getElementById("mobileBackBtn").addEventListener("click", () => {
+      document.getElementById("chatWindowPanel").classList.remove("active");
+      document.getElementById("chatListPanel").classList.add("active");
+    });
+  </script>
+
+</body>
+</html>
